@@ -1,8 +1,8 @@
-import Product from "./Product/Product";
+import Product from "../Product/Product";
 
-import "./Products.css";
+import "./Deals.css";
 
-const Products = () => {
+const Deals = () => {
   return (
     <div className="sub-container">
       <h2>Deals Just For You!</h2>
@@ -16,4 +16,4 @@ const Products = () => {
     </div>
   );
 };
-export default Products;
+export default Deals;

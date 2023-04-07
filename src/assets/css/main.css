@@ -18,7 +18,8 @@ body {
   font-weight: 900;
 }
 
-header {
+header,
+footer {
   background-color: #ff8b15;
 }
 
@@ -32,4 +33,19 @@ header {
   background-color: #f9f9f9;
   padding: 1rem;
   margin-bottom: 1rem;
+}
+
+footer {
+  margin-top: 2rem;
+  padding: 2rem;
+  color: white;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }

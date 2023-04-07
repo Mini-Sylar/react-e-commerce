@@ -2,8 +2,10 @@ import Nav from "./components/NavBar/NavBar";
 import Banner from "./components/Banner/Banner";
 import Filters from "./components/Filters/Filters";
 import Products from "./components/Products/Products";
-import Deals from "./components/Products/Deals";
+import Deals from "./components/Products/Deals/Deals";
+import TopProducts from "./components/Products/TopProducts/TopProducts";
 import Benefits from "./components/Benefits/Benefits";
+import ShopFooter from "./components/Footer/ShopFooter";
 
 function App() {
   return (
@@ -28,7 +30,13 @@ function App() {
         <section className="deals">
           <Deals></Deals>
         </section>
+        <section className="top-products">
+          <TopProducts></TopProducts>
+        </section>
       </main>
+      <footer>
+        <ShopFooter></ShopFooter>
+      </footer>
     </div>
   );
 }
