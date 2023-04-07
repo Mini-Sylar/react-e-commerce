@@ -1,0 +1,9 @@
+.product-container {
+  max-height: 30rem;
+}
+
+.image img {
+  width: 50%;
+  height: 100%;
+  object-fit: contain;
+}

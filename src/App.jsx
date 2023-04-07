@@ -1,6 +1,7 @@
 import Nav from "./components/NavBar/NavBar";
 import Banner from "./components/Banner/Banner";
 import Filters from "./components/Filters/Filters";
+import Products from "./components/Products/Products";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <main>
         <Banner></Banner>
         <Filters></Filters>
+        <Products></Products>
       </main>
     </div>
   );
