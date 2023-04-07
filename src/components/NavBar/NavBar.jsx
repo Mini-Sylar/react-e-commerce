@@ -1,14 +1,18 @@
+import Account from "./Account/Account";
 import Links from "./Links/Links";
 import Logo from "./Logo/Logo";
+import Search from "./Search/Search";
+
+import "./NavBar.css";
 
 const NavBar = () => {
   return (
-    <div>
-      <div className="logo">
+    <div className="sub-container">
+      <div className="nav-container">
         <Logo></Logo>
-      </div>
-      <div className="links">
         <Links></Links>
+        <Search></Search>
+        <Account></Account>
       </div>
     </div>
   );

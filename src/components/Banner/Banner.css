@@ -1,0 +1,28 @@
+.banner {
+  display: flex;
+  background-color: #f9efe6;
+  padding-inline: min(5%, 5rem);
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.subject,
+.banner-text {
+  width: 100%;
+  align-self: center;
+}
+
+.banner-text h1 {
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 500;
+}
+
+.subject {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.subject img {
+  width: min(60%, 400px);
+  object-fit: contain;
+}

@@ -1,6 +1,6 @@
 const Links = () => {
   return (
-    <div>
+    <div className="links">
       <a href="#">Deals</a>
       <a href="#">What's New</a>
       <a href="#">Delivery</a>

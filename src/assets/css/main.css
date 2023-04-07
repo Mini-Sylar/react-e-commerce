@@ -1,0 +1,23 @@
+@import "./base.css";
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.main-container {
+  width: min(90%, 1400px);
+  margin: 0 auto;
+}
+
+.sub-container {
+  width: min(90%, 1200px);
+  margin: 0 auto;
+}
+
+.btn-rounded {
+  border-radius: 50px;
+  background-color: #033d24;
+  color: #fff;
+  border: none;
+  padding: 1rem 2rem;
+}

@@ -1,0 +1,6 @@
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: springgreen;
+  align-items: center;
+}
