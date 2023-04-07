@@ -11,8 +11,25 @@ body {
 
 .btn-rounded {
   border-radius: 50px;
-  background-color: #033d24;
-  color: #fff;
+  background-color: #ffffff;
+  color: #fd8a15;
   border: none;
   padding: 1rem 2rem;
+  font-weight: 900;
+}
+
+header {
+  background-color: #ff8b15;
+}
+
+.hero-section {
+  background-color: #ff8b15;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.products-section {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }

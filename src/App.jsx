@@ -2,37 +2,31 @@ import Nav from "./components/NavBar/NavBar";
 import Banner from "./components/Banner/Banner";
 import Filters from "./components/Filters/Filters";
 import Products from "./components/Products/Products";
+import Deals from "./components/Products/Deals";
+import Benefits from "./components/Benefits/Benefits";
 
 function App() {
   return (
     <div>
-      <header
-        style={{
-          backgroundColor: "#ff8b15",
-        }}
-      >
+      <header>
         <Nav></Nav>
       </header>
       <main>
-        <section
-          style={{
-            backgroundColor: "#ff8b15",
-            padding: "1rem",
-            marginBottom: "1rem",
-          }}
-        >
+        <section className="hero-section">
           <Banner></Banner>
         </section>
-        <Filters></Filters>
-
-        <section
-          style={{
-            backgroundColor: "#f9f9f9",
-            padding: "1rem",
-            marginBlock: "1rem",
-          }}
-        >
+        <section className="benefits-section"></section>
+        {/* <section className="filters-section">
+          <Filters></Filters>
+        </section> */}
+        <section>
+          <Benefits></Benefits>
+        </section>
+        <section className="products-section">
           <Products></Products>
+        </section>
+        <section className="deals">
+          <Deals></Deals>
         </section>
       </main>
     </div>

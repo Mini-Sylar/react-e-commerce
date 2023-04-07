@@ -1,8 +1,17 @@
 .product-container {
   max-height: 30rem;
   padding: 1rem;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  background-color: #fff;
+  background: #ffffff;
+  box-shadow: 0px 0px 10px #e8e8e8;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+
+.product-container:hover {
+  box-shadow: 13px 13px 26px #e8e8e8, -13px -13px 26px #ffffff;
 }
 
 .image img {

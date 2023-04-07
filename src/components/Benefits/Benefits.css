@@ -1,0 +1,32 @@
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  background-color: #ffffff;
+  margin-top: -2.5rem;
+  width: 60%;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.benefit-title {
+  font-size: medium;
+}
+
+.benefit-body {
+  font-size: small;
+}
+
+.benefit-icon {
+  font-size: 2rem;
+  color: #ff6b08;
+}
+
+.main-benefit {
+  display: flex;
+  justify-content: center;
+}
+
+.benefits-item {
+  place-content: center;
+  text-align: center;
+}
