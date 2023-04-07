@@ -1,5 +1,6 @@
 import "./Product.css";
 import headphones_pink from "@/assets/images/airpods_max_pink.jpg";
+import { FaStar } from "react-icons/fa";
 
 const Product = () => {
   return (
@@ -13,12 +14,18 @@ const Product = () => {
           <h4>Wireless Earbuds, IPX8</h4>
           <h5>Organic Cotton, fairtrade certified</h5>
           <div className="star-rating">
-            <div className="star">&star;</div>
-            <span>(111)</span>
+            <div className="star">
+              <FaStar></FaStar>
+              <FaStar></FaStar>
+              <FaStar></FaStar>
+              <FaStar></FaStar>
+              <FaStar></FaStar>
+            </div>
+            <span>(111 Reviews)</span>
           </div>
         </div>
         <div>
-          <button>Add to Cart</button>
+          <button className="add-to-cart">Add to Cart</button>
         </div>
       </div>
       <div className="heart"></div>

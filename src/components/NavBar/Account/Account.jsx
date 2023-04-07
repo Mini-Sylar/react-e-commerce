@@ -1,16 +1,12 @@
-import { MdOutlineAccountBox, MdShoppingCart } from "react-icons/md";
+import { FaRegUser, FaShoppingCart } from "react-icons/fa";
 
 const Account = () => {
   return (
     <div className="account">
-      <div className="user">
-        <MdOutlineAccountBox></MdOutlineAccountBox>
-        Account
-      </div>
-      {/* Cart */}
       <div className="cart">
-        <MdShoppingCart></MdShoppingCart>
-        Cart
+        <span>
+          <FaShoppingCart></FaShoppingCart>
+        </span>
       </div>
     </div>
   );

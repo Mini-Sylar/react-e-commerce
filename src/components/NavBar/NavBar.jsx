@@ -11,7 +11,7 @@ const NavBar = () => {
       <div className="nav-container">
         <Logo></Logo>
         <Links></Links>
-        <Search></Search>
+        {/* <Search></Search> */}
         <Account></Account>
       </div>
     </div>

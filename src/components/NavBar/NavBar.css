@@ -1,6 +1,28 @@
 .nav-container {
   display: flex;
+  gap: 1rem;
   justify-content: space-between;
-  background-color: springgreen;
   align-items: center;
+  min-height: 5rem;
+  color: white;
+}
+
+.links {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  width: min(50%, 400px);
+}
+.links a {
+  width: 100%;
+  text-decoration: none;
+  color: white;
+}
+
+.account {
+  display: flex;
+}
+
+.account span:nth-of-type(1) {
+  font-size: 1.5rem;
 }

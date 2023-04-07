@@ -6,13 +6,34 @@ import Products from "./components/Products/Products";
 function App() {
   return (
     <div>
-      <header>
+      <header
+        style={{
+          backgroundColor: "#ff8b15",
+        }}
+      >
         <Nav></Nav>
       </header>
       <main>
-        <Banner></Banner>
+        <section
+          style={{
+            backgroundColor: "#ff8b15",
+            padding: "1rem",
+            marginBottom: "1rem",
+          }}
+        >
+          <Banner></Banner>
+        </section>
         <Filters></Filters>
-        <Products></Products>
+
+        <section
+          style={{
+            backgroundColor: "#f9f9f9",
+            padding: "1rem",
+            marginBlock: "1rem",
+          }}
+        >
+          <Products></Products>
+        </section>
       </main>
     </div>
   );

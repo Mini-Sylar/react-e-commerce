@@ -4,6 +4,11 @@
   padding-inline: min(5%, 5rem);
   margin-top: 1rem;
   margin-bottom: 2rem;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 .subject,
