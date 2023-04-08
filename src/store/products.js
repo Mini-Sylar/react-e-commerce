@@ -14,13 +14,10 @@ const actions = {
   CLEAR_CART: "CLEAR_CART",
 };
 
-const reducer = async (state, action) => {
+const reducer = (state, action) => {
   if (action.type == actions.GET_PRODUCTS) {
-    let data = await fetch("http://localhost:3000/api/get-products");
-    let products = await data.json();
-    console.log(products);
-    return { ...state, products };
-  } 
+    return { ...state, products: action.products };
+  }
   return state;
 };
 
@@ -39,7 +36,10 @@ const useStore = () => {
     dispatch({ type: actions.CLEAR_CART });
   };
   const getProducts = () => {
-    dispatch({ type: actions.GET_PRODUCTS });
+    fetch("http://localhost:3000/api/get-products").then(async (response) => {
+      const data = await response.json();
+      dispatch({ type: actions.GET_PRODUCTS, products: data });
+    });
   };
 
   return {
