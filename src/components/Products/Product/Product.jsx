@@ -10,7 +10,11 @@ const Product = ({ product }) => {
   return (
     <div className="product-container">
       <div className="image">
-        <img src={headphones_pink} alt="Product Image" width={"100%"} />
+        <img
+          src={product?.product_image || headphones_pink}
+          alt="Product Image"
+          width={"100%"}
+        />
       </div>
       <div className="product-details">
         <div className="name-add-to-cart"></div>
@@ -19,7 +23,7 @@ const Product = ({ product }) => {
           <h5>{product?.description}</h5>
           <div className="star-rating">
             <div className="star">{stars}</div>
-            <span>(111 Reviews)</span>
+            <span>({parseInt(Math.random() * 100)} Reviews)</span>
           </div>
         </div>
         <div>
