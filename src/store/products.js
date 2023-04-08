@@ -16,6 +16,7 @@ const actions = {
 
 const reducer = (state, action) => {
   if (action.type == actions.GET_PRODUCTS) {
+    console.log({ ...state, products: action.products });
     return { ...state, products: action.products };
   }
   return state;
