@@ -1,22 +1,21 @@
 import HomeView from "./views/HomeView";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "@/components/NavBar/NavBar";
 import ShopFooter from "@/components/Footer/ShopFooter";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <HomeView />,
-  },
-]);
+import ErrorView from "./views/ErrorView";
 
 function App() {
   return (
     <div>
-      <header>
-        <NavBar></NavBar>
-      </header>
-      <RouterProvider router={router} />
+      <BrowserRouter>
+        <header>
+          <NavBar></NavBar>
+        </header>
+        <Routes>
+          <Route path="/" element={<HomeView />} />
+          <Route path="*" element={<ErrorView />} />
+        </Routes>
+      </BrowserRouter>
       <footer>
         <ShopFooter></ShopFooter>
       </footer>
