@@ -20,8 +20,9 @@ const reducer = (state, action) => {
   }
   if (action.type == actions.ADD_TO_CART) {
     const product = state.products.find(
-      (product) => product.id == action.product.id
+      (product) => product._id == action.product
     );
+    product.addedToCart = true;
     return {
       ...state,
       cart: [...state.cart, product],
@@ -30,9 +31,9 @@ const reducer = (state, action) => {
     };
   }
   if (action.type == actions.REMOVE_FROM_CART) {
-    const product = state.cart.find(
-      (product) => product.id == action.product.id
-    );
+    const product = state.cart.find((product) => product._id == action.product);
+
+    product.addedToCart = false;
     return {
       ...state,
       cart: state.cart.filter((product) => product.id != action.product.id),
@@ -61,7 +62,10 @@ const useStore = () => {
     fetch("http://localhost:3000/api/get-products")
       .then(async (response) => {
         const data = await response.json();
-        dispatch({ type: actions.GET_PRODUCTS, products: data });
+        let modifiedData = data.map((product) => {
+          return { ...product, addedToCart: false };
+        });
+        dispatch({ type: actions.GET_PRODUCTS, products: modifiedData });
       })
       .catch((err) => {
         console.log(err);

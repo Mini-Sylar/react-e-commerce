@@ -6,20 +6,18 @@ import { useState } from "react";
 
 const Product = ({ product }) => {
   let store = useGlobalContext();
-  const [addRemove, setAddRemove] = useState(true);
   let stars = [];
   for (let i = 0; i < product?.rating; i++) {
     stars.push(<FaStar key={i} />);
   }
+  const isInCart = product?.addedToCart;
   // add to cart
   const addToCart = (id) => {
     store.addToCart(id);
-    setAddRemove(false);
   };
 
   const removeFromCart = (id) => {
     store.removeFromCart(id);
-    setAddRemove(true);
   };
   return (
     <div className="product-container">
@@ -41,7 +39,7 @@ const Product = ({ product }) => {
           </div>
         </div>
         <div>
-          {addRemove ? (
+          {isInCart == false ? (
             <button
               className="add-to-cart"
               onClick={() => {

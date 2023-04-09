@@ -1,0 +1,15 @@
+.order-details {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1.5fr;
+}
+
+.left-side img {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+}
