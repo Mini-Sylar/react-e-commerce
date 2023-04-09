@@ -3,7 +3,7 @@ import "./OrderDetails.css";
 const OrderDetails = ({ product }) => {
   return (
     <div className="order-details">
-      <div className="details">
+      <div className="order-detail">
         <div className="left-side">
           <img src={product.product_image} alt="" />
         </div>
@@ -12,12 +12,15 @@ const OrderDetails = ({ product }) => {
           <p>{product.description}</p>
         </div>
       </div>
-      <div className="price">
+      <div className="order-price">
         <h3>${product.price}</h3>
       </div>
       <div className="quantity">
         <p>Quantity</p>
-        <input type="number" />
+        <input type="number" className="quantity" />
+      </div>
+      <div className="remove">
+        <button>Remove</button>
       </div>
     </div>
   );

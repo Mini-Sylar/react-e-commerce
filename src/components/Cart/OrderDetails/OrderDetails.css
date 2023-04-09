@@ -1,15 +1,51 @@
 .order-details {
   display: grid;
-  grid-template-columns: 2fr 1.5fr 1.5fr;
+  grid-template-columns: 2fr 1.5fr 1.5fr 0.5fr;
+  gap: 2rem;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px #e8e8e8;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
 
 .left-side img {
-  width: 2rem;
-  height: 2rem;
+  width: 5rem;
+  height: 5rem;
   object-fit: contain;
 }
 
-.details {
+.order-detail {
   display: flex;
   align-items: center;
+  gap: 1rem;
+}
+
+.order-price {
+  display: flex;
+  align-items: center;
+}
+
+.remove {
+  display: flex;
+  align-items: center;
+}
+
+.remove button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #e0373d;
+  transition: color 0.5s ease;
+  -webkit-transition: color 0.5s ease;
+  -moz-transition: color 0.5s ease;
+  -ms-transition: color 0.5s ease;
+  -o-transition: color 0.5s ease;
+}
+
+.remove button:hover {
+  color: #ff3d43;
+}
+
+.quantity {
+  width: min(5rem, 100%);
 }

@@ -18,6 +18,7 @@ const reducer = (state, action) => {
   if (action.type == actions.GET_PRODUCTS) {
     return { ...state, products: action.products };
   }
+  // ADD TO CART
   if (action.type == actions.ADD_TO_CART) {
     const product = state.products.find(
       (product) => product._id == action.product
@@ -30,13 +31,17 @@ const reducer = (state, action) => {
       cartTotal: state.cartTotal + product.price,
     };
   }
+  // Remove from cart
   if (action.type == actions.REMOVE_FROM_CART) {
     const product = state.cart.find((product) => product._id == action.product);
+    const newCart = state.cart.filter(
+      (product) => product._id != action.product
+    );
 
     product.addedToCart = false;
     return {
       ...state,
-      cart: state.cart.filter((product) => product.id != action.product.id),
+      cart: newCart,
       cartQuantity: state.cartQuantity - 1,
       cartTotal: state.cartTotal - product.price,
     };

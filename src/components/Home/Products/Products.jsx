@@ -2,12 +2,13 @@ import Product from "./Product/Product";
 
 import "./Products.css";
 import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
-import { useEffect } from "react";
+import { useEffect, memo } from "react";
 
 const Products = () => {
   let store = useGlobalContext();
 
   useEffect(() => {
+    if (store.state.products.length > 0) return;
     store.getProducts();
   }, []);
   return (
@@ -25,4 +26,4 @@ const Products = () => {
     </div>
   );
 };
-export default Products;
+export default memo(Products);
