@@ -19,6 +19,17 @@ const reducer = (state, action) => {
     console.log({ ...state, products: action.products });
     return { ...state, products: action.products };
   }
+  if (action.type == actions.ADD_TO_CART) {
+    const product = state.products.find(
+      (product) => product.id == action.product.id
+    );
+    return {
+      ...state,
+      cart: [...state.cart, product],
+      cartQuantity: state.cartQuantity + 1,
+      cartTotal: state.cartTotal + product.price,
+    };
+  }
   return state;
 };
 
@@ -37,10 +48,14 @@ const useStore = () => {
     dispatch({ type: actions.CLEAR_CART });
   };
   const getProducts = () => {
-    fetch("http://localhost:3000/api/get-products").then(async (response) => {
-      const data = await response.json();
-      dispatch({ type: actions.GET_PRODUCTS, products: data });
-    });
+    fetch("http://localhost:3000/api/get-products")
+      .then(async (response) => {
+        const data = await response.json();
+        dispatch({ type: actions.GET_PRODUCTS, products: data });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return {

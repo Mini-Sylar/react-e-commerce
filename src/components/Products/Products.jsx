@@ -25,18 +25,5 @@ const Products = () => {
     </div>
   );
 
-  // return (
-  //   <div className="sub-container">
-  //     <h2>Headphones For You</h2>
-  //     <div className="contains-product">
-  //       <div>{store.state.products}</div>
-  //       <Product></Product>
-  //       <Product></Product>
-  //       <Product></Product>
-  //       <Product></Product>
-  //       <Product></Product>
-  //     </div>
-  //   </div>
-  // );
 };
 export default Products;
