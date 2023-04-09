@@ -2,9 +2,11 @@ import "./Product.css";
 import headphones_pink from "@/assets/images/airpods_max_pink.jpg";
 import { FaStar } from "react-icons/fa";
 import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
+import { useState } from "react";
 
 const Product = ({ product }) => {
   let store = useGlobalContext();
+  const [addRemove, setAddRemove] = useState(true);
   let stars = [];
   for (let i = 0; i < product?.rating; i++) {
     stars.push(<FaStar key={i} />);
@@ -12,6 +14,12 @@ const Product = ({ product }) => {
   // add to cart
   const addToCart = (id) => {
     store.addToCart(id);
+    setAddRemove(false);
+  };
+
+  const removeFromCart = (id) => {
+    store.removeFromCart(id);
+    setAddRemove(true);
   };
   return (
     <div className="product-container">
@@ -33,14 +41,25 @@ const Product = ({ product }) => {
           </div>
         </div>
         <div>
-          <button
-            className="add-to-cart"
-            onClick={() => {
-              addToCart(product?._id);
-            }}
-          >
-            Add to Cart
-          </button>
+          {addRemove ? (
+            <button
+              className="add-to-cart"
+              onClick={() => {
+                addToCart(product?._id);
+              }}
+            >
+              Add to Cart
+            </button>
+          ) : (
+            <button
+              className="add-to-cart"
+              onClick={() => {
+                removeFromCart(product?._id);
+              }}
+            >
+              Remove from cart
+            </button>
+          )}
         </div>
       </div>
       <div className="heart"></div>

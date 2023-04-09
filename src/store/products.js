@@ -16,7 +16,6 @@ const actions = {
 
 const reducer = (state, action) => {
   if (action.type == actions.GET_PRODUCTS) {
-    console.log({ ...state, products: action.products });
     return { ...state, products: action.products };
   }
   if (action.type == actions.ADD_TO_CART) {
@@ -28,6 +27,17 @@ const reducer = (state, action) => {
       cart: [...state.cart, product],
       cartQuantity: state.cartQuantity + 1,
       cartTotal: state.cartTotal + product.price,
+    };
+  }
+  if (action.type == actions.REMOVE_FROM_CART) {
+    const product = state.cart.find(
+      (product) => product.id == action.product.id
+    );
+    return {
+      ...state,
+      cart: state.cart.filter((product) => product.id != action.product.id),
+      cartQuantity: state.cartQuantity - 1,
+      cartTotal: state.cartTotal - product.price,
     };
   }
   return state;
