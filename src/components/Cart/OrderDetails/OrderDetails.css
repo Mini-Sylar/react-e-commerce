@@ -49,3 +49,13 @@
 .quantity {
   width: min(5rem, 100%);
 }
+
+button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+button:disabled:hover {
+  background-color: #aaa;
+  cursor: not-allowed;
+}

@@ -31,7 +31,6 @@ const OrderDetails = ({ product }) => {
           <p>{product.quantity}</p>
           <button
             onClick={() => {
-              console.log("add quantity");
               store.addQuantity(product._id);
             }}
           >

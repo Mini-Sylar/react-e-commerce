@@ -5,16 +5,18 @@ const initialState = {
   cart: [],
   cartTotal: 0,
   cartQuantity: 0,
+  order: [],
 };
 
-const actions = {
+const actions = Object.freeze({
   ADD_TO_CART: "ADD_TO_CART",
   GET_PRODUCTS: "GET_PRODUCTS",
   REMOVE_FROM_CART: "REMOVE_FROM_CART",
   CLEAR_CART: "CLEAR_CART",
   ADD_QUANTITY: "ADD_QUANTITY",
   REDUCE_QUANTITY: "REDUCE_QUANTITY",
-};
+  CONFIRM_ORDER: "CONFIRM_ORDER",
+});
 
 const reducer = (state, action) => {
   if (action.type == actions.GET_PRODUCTS) {
@@ -52,7 +54,6 @@ const reducer = (state, action) => {
   // add quantity
   if (action.type == actions.ADD_QUANTITY) {
     const product = state.cart.find((product) => product._id == action.product);
-    console.log(product)
     product.quantity = product.quantity + 1;
     return {
       ...state,
@@ -73,6 +74,20 @@ const reducer = (state, action) => {
     };
   }
 
+  // confirm order
+  if (action.type == actions.CONFIRM_ORDER) {
+    let payload = {
+      items: state.cart,
+      totalItemCount: state.cartQuantity,
+      delivery_type: action.order.DeliveryType,
+      delivery_type_cost: action.order.DeliveryTypeCost,
+      cost_before_delivery_rate: state.cartTotal,
+      cost_after_delivery_rate: action.order.costAfterDelieveryRate,
+      promo_code: action.order.promo_code,
+      contact_number: action.order.phoneNumber,
+    };
+    console.log(payload);
+  }
   return state;
 };
 
@@ -99,8 +114,8 @@ const useStore = () => {
         });
         dispatch({ type: actions.GET_PRODUCTS, products: modifiedData });
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+        return [];
       });
   };
 
@@ -112,6 +127,10 @@ const useStore = () => {
     dispatch({ type: actions.REDUCE_QUANTITY, product });
   };
 
+  const confirmOrder = (order) => {
+    dispatch({ type: actions.CONFIRM_ORDER, order });
+  };
+
   return {
     state,
     addToCart,
@@ -120,6 +139,7 @@ const useStore = () => {
     getProducts,
     addQuantity,
     reduceQuantity,
+    confirmOrder,
   };
 };
 

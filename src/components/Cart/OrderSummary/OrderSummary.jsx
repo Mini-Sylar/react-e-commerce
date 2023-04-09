@@ -1,8 +1,26 @@
 import "./OrderSummary.css";
 import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
+import { useRef, useState } from "react";
 
 const OrderSummary = () => {
   const store = useGlobalContext();
+  const [deliveryType, setDeliveryType] = useState("Standard");
+  const [phone, setPhone] = useState("");
+  const setDelivery = (type) => {
+    setDeliveryType(type);
+  };
+  const checkOut = () => {
+    let payload = {
+      DeliveryType: deliveryType,
+      DeliveryTypeCost: deliveryType == "Standard" ? 5 : 10,
+      costAfterDelieveryRate:
+        store.state.cartTotal + (deliveryType == "Standard" ? 5 : 10),
+      promoCode: "",
+      phoneNumber: phone,
+    };
+
+    store.confirmOrder(payload);
+  };
   return (
     <div className="is-order-summary">
       <div className="sub-container">
@@ -13,9 +31,17 @@ const OrderSummary = () => {
           </div>
           <div className="shipping">
             <h4>Shipping</h4>
-            <select name="" id="" className="select-dropdown">
-              <option value="" className="select">
+            <select
+              className="select-dropdown"
+              onChange={(item) => {
+                setDelivery(item.target.value);
+              }}
+            >
+              <option value="Standard" className="select">
                 Standard
+              </option>
+              <option value="Express" className="select">
+                Express
               </option>
             </select>
           </div>
@@ -23,15 +49,45 @@ const OrderSummary = () => {
             <h4>Promo Code</h4>
             <div className="enter-promo">
               <input className="select-dropdown" type="text" />
-              <button className="flat-button apply-promo">Apply</button>
+              <button
+                className="flat-button apply-promo"
+                disabled={store.state.cartQuantity > 0 ? false : true}
+              >
+                Apply
+              </button>
             </div>
+          </div>
+          <div className="promo-code">
+            <h4>Phone Number</h4>
+            <input
+              className="select-dropdown"
+              type="text"
+              onChange={(item) => {
+                setPhone(item.target.value);
+              }}
+            />
+            <small>
+              <em style={{ color: "#ff2100" }}>
+                Your number would be called to verify the order placement
+              </em>
+            </small>
           </div>
           <div className="final-cost">
             <h4>Total Cost</h4>
-            <h4>$ 0.00</h4>
+            <h4>
+              $ {store.state.cartTotal + (deliveryType == "Standard" ? 5 : 10)}
+            </h4>
           </div>
           <div className="final-checkout">
-            <button className="flat-button checkout">Checkout</button>
+            <button
+              className="flat-button checkout"
+              onClick={() => {
+                checkOut();
+              }}
+              disabled={store.state.cartQuantity > 0 ? false : true}
+            >
+              Checkout
+            </button>
           </div>
         </div>
       </div>
