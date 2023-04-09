@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "@/components/NavBar/NavBar";
 import ShopFooter from "@/components/Footer/ShopFooter";
 import ErrorView from "./views/ErrorView";
+import CartView from "./views/CartView";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         </header>
         <Routes>
           <Route path="/" element={<HomeView />} />
+          <Route path="/cart" element={<CartView />} />
           <Route path="*" element={<ErrorView />} />
         </Routes>
       </BrowserRouter>

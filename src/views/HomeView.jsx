@@ -1,8 +1,8 @@
-import Banner from "@/components/Banner/Banner";
-import Products from "@/components/Products/Products";
-import Deals from "@/components/Products/Deals/Deals";
-import TopProducts from "@/components/Products/TopProducts/TopProducts";
-import Benefits from "@/components/Benefits/Benefits";
+import Banner from "@/components/Home/Banner/Banner";
+import Products from "@/components/Home/Products/Products";
+import Deals from "@/components/Home/Products/Deals/Deals";
+import TopProducts from "@/components/Home/Products/TopProducts/TopProducts";
+import Benefits from "@/components/Home/Benefits/Benefits";
 
 function HomeView() {
   return (

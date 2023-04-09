@@ -1,7 +1,7 @@
 import Product from "./Product/Product";
 
 import "./Products.css";
-import { useGlobalContext } from "../GlobalContext/GlobalContext";
+import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
 import { useEffect } from "react";
 
 const Products = () => {
@@ -24,6 +24,5 @@ const Products = () => {
       )}
     </div>
   );
-
 };
 export default Products;
