@@ -2,7 +2,7 @@ import Order from "../components/Cart/Order";
 
 const CartView = () => {
   return (
-    <div className="sub-container">
+    <div>
       <main>
         <Order></Order>
       </main>

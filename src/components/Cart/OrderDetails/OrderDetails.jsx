@@ -1,6 +1,9 @@
 import "./OrderDetails.css";
 
+import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
+
 const OrderDetails = ({ product }) => {
+  const store = useGlobalContext();
   return (
     <div className="order-details">
       <div className="order-detail">
@@ -17,7 +20,24 @@ const OrderDetails = ({ product }) => {
       </div>
       <div className="quantity">
         <p>Quantity</p>
-        <input type="number" className="quantity" />
+        <div className="increase-quantity">
+          <button
+            onClick={() => {
+              store.reduceQuantity(product._id);
+            }}
+          >
+            -
+          </button>
+          <p>{product.quantity}</p>
+          <button
+            onClick={() => {
+              console.log("add quantity");
+              store.addQuantity(product._id);
+            }}
+          >
+            +
+          </button>
+        </div>
       </div>
       <div className="remove">
         <button>Remove</button>

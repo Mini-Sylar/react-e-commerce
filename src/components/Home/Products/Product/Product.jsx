@@ -10,14 +10,6 @@ const Product = ({ product }) => {
     stars.push(<FaStar key={i} />);
   }
   const isInCart = product?.addedToCart;
-  // add to cart
-  const addToCart = (id) => {
-    store.addToCart(id);
-  };
-
-  const removeFromCart = (id) => {
-    store.removeFromCart(id);
-  };
   return (
     <div className="product-container">
       <div className="image">
@@ -42,7 +34,7 @@ const Product = ({ product }) => {
             <button
               className="add-to-cart"
               onClick={() => {
-                addToCart(product?._id);
+                store.addToCart(product?._id);
               }}
             >
               Add to Cart
@@ -51,7 +43,7 @@ const Product = ({ product }) => {
             <button
               className="add-to-cart"
               onClick={() => {
-                removeFromCart(product?._id);
+                store.removeFromCart(product?._id);
               }}
             >
               Remove from cart

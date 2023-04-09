@@ -1,0 +1,37 @@
+.order-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-container {
+  height: 65vh;
+  overflow: auto;
+}
+
+.order-container::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.order-container::-webkit-scrollbar-thumb {
+  background-color: #bdbdbd;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.main-order-container {
+  display: flex;
+  gap: 2rem;
+  width: min(100%, 1400px);
+  margin: 0 auto;
+}
+
+.view-order {
+  flex: 1;
+}
+
+.order-summary {
+  flex: 0.4;
+}

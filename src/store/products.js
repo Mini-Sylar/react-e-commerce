@@ -12,6 +12,8 @@ const actions = {
   GET_PRODUCTS: "GET_PRODUCTS",
   REMOVE_FROM_CART: "REMOVE_FROM_CART",
   CLEAR_CART: "CLEAR_CART",
+  ADD_QUANTITY: "ADD_QUANTITY",
+  REDUCE_QUANTITY: "REDUCE_QUANTITY",
 };
 
 const reducer = (state, action) => {
@@ -24,6 +26,7 @@ const reducer = (state, action) => {
       (product) => product._id == action.product
     );
     product.addedToCart = true;
+    product.quantity = 1;
     return {
       ...state,
       cart: [...state.cart, product],
@@ -46,6 +49,30 @@ const reducer = (state, action) => {
       cartTotal: state.cartTotal - product.price,
     };
   }
+  // add quantity
+  if (action.type == actions.ADD_QUANTITY) {
+    const product = state.cart.find((product) => product._id == action.product);
+    console.log(product)
+    product.quantity = product.quantity + 1;
+    return {
+      ...state,
+      cartTotal: state.cartTotal + product.price,
+    };
+  }
+
+  // reduce quantity
+  if (action.type == actions.REDUCE_QUANTITY) {
+    const product = state.cart.find((product) => product._id == action.product);
+    if (product.quantity == 1) {
+      return state;
+    }
+    product.quantity = product.quantity - 1;
+    return {
+      ...state,
+      cartTotal: state.cartTotal - product.price,
+    };
+  }
+
   return state;
 };
 
@@ -77,12 +104,22 @@ const useStore = () => {
       });
   };
 
+  const addQuantity = (product) => {
+    dispatch({ type: actions.ADD_QUANTITY, product });
+  };
+
+  const reduceQuantity = (product) => {
+    dispatch({ type: actions.REDUCE_QUANTITY, product });
+  };
+
   return {
     state,
     addToCart,
     removeFromCart,
     clearCart,
     getProducts,
+    addQuantity,
+    reduceQuantity,
   };
 };
 

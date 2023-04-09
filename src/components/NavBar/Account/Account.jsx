@@ -9,7 +9,7 @@ const Account = () => {
   return (
     <div className="account">
       <div className="cart">
-        <Link to={"/cart"}>
+        <Link to={'/cart'}>
           <span className="account-details">
             <FaShoppingCart></FaShoppingCart>
             <span className="items-in-cart">{cartTotal}</span>
