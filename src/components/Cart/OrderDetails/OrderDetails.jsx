@@ -40,7 +40,13 @@ const OrderDetails = ({ product }) => {
         </div>
       </div>
       <div className="remove">
-        <button>Remove</button>
+        <button
+          onClick={() => {
+            store.removeFromCart(product?._id);
+          }}
+        >
+          Remove
+        </button>
       </div>
     </div>
   );
