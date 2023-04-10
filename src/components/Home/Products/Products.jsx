@@ -6,6 +6,9 @@ import { useEffect, memo } from "react";
 
 const Products = () => {
   let store = useGlobalContext();
+  let sortedProducts = store.state.products
+    .slice()
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   useEffect(() => {
     if (store.state.products.length > 0) return;
@@ -16,7 +19,7 @@ const Products = () => {
       <h2>Headphones For You</h2>
       {store.state.products.length > 0 ? (
         <div className="contains-product">
-          {store.state.products.map((product) => (
+          {sortedProducts.map((product) => (
             <Product key={product._id} product={product} />
           ))}
         </div>

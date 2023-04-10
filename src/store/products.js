@@ -1,4 +1,5 @@
 import { useReducer } from "react";
+import localforage from "localforage";
 
 const initialState = {
   products: [],
@@ -16,19 +17,55 @@ const actions = Object.freeze({
   ADD_QUANTITY: "ADD_QUANTITY",
   REDUCE_QUANTITY: "REDUCE_QUANTITY",
   CONFIRM_ORDER: "CONFIRM_ORDER",
+  PREFILL_CART: "PREFILL_CART",
 });
 
 const reducer = (state, action) => {
+  // GET PRODUCTS
   if (action.type == actions.GET_PRODUCTS) {
-    return { ...state, products: action.products };
+    if (action.backed_up_cart == []) {
+      return { ...state, products: action.products };
+    }
+    // prefil cart
+    const cartTotal = action.backed_up_cart.reduce(
+      (acc, item) => acc + item.price,
+      0
+    );
+    const cartQuantity = action.backed_up_cart.reduce(
+      (acc, item) => acc + item.quantity,
+      0
+    );
+
+    const updatedProducts = action.products.map((product) => {
+      const cartItem = action.backed_up_cart.find(
+        (item) => item._id === product._id
+      );
+      if (cartItem) {
+        return { ...cartItem, addedToCart: true };
+      } else {
+        return product;
+      }
+    });
+    console.log(updatedProducts);
+    return {
+      ...state,
+      products: updatedProducts,
+      cart: action.backed_up_cart,
+      cartQuantity,
+      cartTotal,
+    };
   }
-  // ADD TO CART
+ // ADD TO CART
   if (action.type == actions.ADD_TO_CART) {
     const product = state.products.find(
       (product) => product._id == action.product
     );
     product.addedToCart = true;
     product.quantity = 1;
+
+    // backup with local Forage here
+    localforage.setItem("cartItems", [...state.cart, product]);
+
     return {
       ...state,
       cart: [...state.cart, product],
@@ -38,23 +75,30 @@ const reducer = (state, action) => {
   }
   // Remove from cart
   if (action.type == actions.REMOVE_FROM_CART) {
-    const product = state.cart.find((product) => product._id == action.product);
+    const product = state.products.find(
+      (product) => product._id == action.product
+    );
     const newCart = state.cart.filter(
       (product) => product._id != action.product
     );
-
-    product.addedToCart = false;
+    const updatedProduct = { ...product, addedToCart: false };
+    localforage.setItem("cartItems", newCart);
     return {
       ...state,
+      products: state.products.map((p) =>
+        p._id === product._id ? updatedProduct : p
+      ),
       cart: newCart,
       cartQuantity: state.cartQuantity - 1,
       cartTotal: state.cartTotal - product.price,
     };
   }
+
   // add quantity
   if (action.type == actions.ADD_QUANTITY) {
     const product = state.cart.find((product) => product._id == action.product);
     product.quantity = product.quantity + 1;
+
     return {
       ...state,
       cartTotal: state.cartTotal + product.price,
@@ -112,7 +156,12 @@ const useStore = () => {
         let modifiedData = data.map((product) => {
           return { ...product, addedToCart: false };
         });
-        dispatch({ type: actions.GET_PRODUCTS, products: modifiedData });
+        let cart = (await localforage.getItem("cartItems")) || [];
+        dispatch({
+          type: actions.GET_PRODUCTS,
+          products: modifiedData,
+          backed_up_cart: cart,
+        });
       })
       .catch(() => {
         return [];
@@ -129,6 +178,11 @@ const useStore = () => {
 
   const confirmOrder = (order) => {
     dispatch({ type: actions.CONFIRM_ORDER, order });
+  };
+
+  const prefillCart = async () => {
+    let cart = (await localforage.getItem("cartItems")) || [];
+    dispatch({ type: actions.PREFILL_CART, cart });
   };
 
   return {
