@@ -75,7 +75,10 @@ const OrderSummary = () => {
           <div className="final-cost">
             <h4>Total Cost</h4>
             <h4>
-              $ {store.state.cartTotal + (deliveryType == "Standard" ? 5 : 10)}
+              ${" "}
+              {store.state.cart.length > 0
+                ? store.state.cartTotal + (deliveryType == "Standard" ? 5 : 10)
+                : 0}
             </h4>
           </div>
           <div className="final-checkout">
