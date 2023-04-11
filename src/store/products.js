@@ -138,7 +138,7 @@ const reducer = (state, action) => {
     };
 
     // place order
-    fetch("http://localhost:3000/api/place-order", {
+    fetch(`${import.meta.env.VITE_API_URL}/place-order`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -180,7 +180,7 @@ const useStore = () => {
     dispatch({ type: actions.CLEAR_CART });
   };
   const getProducts = () => {
-    fetch("http://localhost:3000/api/get-products")
+    fetch(`${import.meta.env.VITE_API_URL}/get-products`)
       .then(async (response) => {
         const data = await response.json();
         let modifiedData = data.map((product) => {
@@ -193,7 +193,7 @@ const useStore = () => {
           backed_up_cart: cart,
         });
       })
-      .catch(() => {
+      .catch((err) => {
         toast.error("There was a problem fetching products, refresh the page");
         return [];
       });
