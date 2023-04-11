@@ -3,6 +3,8 @@ import Product from "./Product/Product";
 import "./Products.css";
 import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
 import { useEffect, memo } from "react";
+import Skeleton from "react-loading-skeleton";
+
 
 const Products = () => {
   let store = useGlobalContext();
@@ -24,7 +26,9 @@ const Products = () => {
           ))}
         </div>
       ) : (
-        <p>Loading...</p>
+        <div className="skeleton">
+          <Skeleton height={250}></Skeleton>
+        </div>
       )}
     </div>
   );

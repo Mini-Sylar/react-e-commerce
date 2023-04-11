@@ -7,9 +7,9 @@ import GlobalContext from "./components/GlobalContext/GlobalContext";
 
 import "./assets/css/main.css";
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <GlobalContext>
       <App />
     </GlobalContext>
-  </React.StrictMode>
+  // </React.StrictMode>
 );

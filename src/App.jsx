@@ -4,6 +4,7 @@ import NavBar from "@/components/NavBar/NavBar";
 import ShopFooter from "@/components/Footer/ShopFooter";
 import ErrorView from "./views/ErrorView";
 import CartView from "./views/CartView";
+import "react-loading-skeleton/dist/skeleton.css";
 
 function App() {
   return (
