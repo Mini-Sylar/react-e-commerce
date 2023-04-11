@@ -1,6 +1,7 @@
 import "./OrderSummary.css";
 import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
-import { useRef, useState } from "react";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 const OrderSummary = () => {
   const store = useGlobalContext();
@@ -85,7 +86,12 @@ const OrderSummary = () => {
             <button
               className="flat-button checkout"
               onClick={() => {
-                checkOut();
+                if (phone.length > 0) {
+                  checkOut();
+                  toast.info("Your order is being processed");
+                  return;
+                }
+                toast.error("Please enter your phone number");
               }}
               disabled={store.state.cartQuantity > 0 ? false : true}
             >

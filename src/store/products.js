@@ -1,5 +1,6 @@
 import { useReducer } from "react";
 import localforage from "localforage";
+import { toast } from "react-toastify";
 
 const initialState = {
   products: [],
@@ -136,7 +137,30 @@ const reducer = (state, action) => {
       contact_number: action.order.phoneNumber,
     };
 
-    console.log(payload);
+    // place order
+    fetch("http://localhost:3000/api/place-order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then(async (response) => {
+        const data = await response.json();
+        toast.success(data.message);
+      })
+      .catch((err) => {
+        toast.error("There was a problem placing your order, try again");
+      });
+
+    // clear cart
+    localforage.setItem("cartItems", []);
+    return {
+      ...state,
+      cart: [],
+      cartQuantity: 0,
+      cartTotal: 0,
+    };
   }
   return state;
 };
@@ -170,6 +194,7 @@ const useStore = () => {
         });
       })
       .catch(() => {
+        toast.error("There was a problem fetching products, refresh the page");
         return [];
       });
   };
@@ -184,11 +209,6 @@ const useStore = () => {
 
   const confirmOrder = (order) => {
     dispatch({ type: actions.CONFIRM_ORDER, order });
-  };
-
-  const prefillCart = async () => {
-    let cart = (await localforage.getItem("cartItems")) || [];
-    dispatch({ type: actions.PREFILL_CART, cart });
   };
 
   return {

@@ -7,6 +7,8 @@ import CartView from "./views/CartView";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useEffect } from "react";
 import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   let store = useGlobalContext();
@@ -29,6 +31,7 @@ function App() {
       <footer>
         <ShopFooter></ShopFooter>
       </footer>
+      <ToastContainer />
     </div>
   );
 }
