@@ -46,7 +46,6 @@ const reducer = (state, action) => {
         return product;
       }
     });
-    console.log(updatedProducts);
     return {
       ...state,
       products: updatedProducts,
@@ -55,7 +54,7 @@ const reducer = (state, action) => {
       cartTotal,
     };
   }
- // ADD TO CART
+  // ADD TO CART
   if (action.type == actions.ADD_TO_CART) {
     const product = state.products.find(
       (product) => product._id == action.product
@@ -83,6 +82,12 @@ const reducer = (state, action) => {
     );
     const updatedProduct = { ...product, addedToCart: false };
     localforage.setItem("cartItems", newCart);
+
+    // recalculate cart total
+    let newCartTotal = 0;
+    newCart.forEach((item) => {
+      newCartTotal += item.price * item.quantity;
+    });
     return {
       ...state,
       products: state.products.map((p) =>
@@ -90,7 +95,7 @@ const reducer = (state, action) => {
       ),
       cart: newCart,
       cartQuantity: state.cartQuantity - 1,
-      cartTotal: state.cartTotal - product.price,
+      cartTotal: newCartTotal,
     };
   }
 
@@ -130,7 +135,7 @@ const reducer = (state, action) => {
       promo_code: action.order.promo_code,
       contact_number: action.order.phoneNumber,
     };
-    console.log(payload);
+
   }
   return state;
 };
