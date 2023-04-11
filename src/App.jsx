@@ -5,8 +5,15 @@ import ShopFooter from "@/components/Footer/ShopFooter";
 import ErrorView from "./views/ErrorView";
 import CartView from "./views/CartView";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useEffect } from "react";
+import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
 
 function App() {
+  let store = useGlobalContext();
+  useEffect(() => {
+    if (store.state.products.length > 0) return;
+    store.getProducts();
+  }, []);
   return (
     <div>
       <BrowserRouter>
