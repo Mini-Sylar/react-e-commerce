@@ -27,10 +27,10 @@ function App() {
           <Route path="/cart" element={<CartView />} />
           <Route path="*" element={<ErrorView />} />
         </Routes>
+        <footer>
+          <ShopFooter></ShopFooter>
+        </footer>
       </BrowserRouter>
-      <footer>
-        <ShopFooter></ShopFooter>
-      </footer>
       <ToastContainer />
     </div>
   );

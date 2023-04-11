@@ -1,5 +1,6 @@
 import "./ShopFooter.css";
-import { useEffect } from "react";
+import { Link } from "react-router-dom";
+
 
 const ShopFooter = () => {
   const newYear = new Date().getFullYear();
@@ -17,10 +18,10 @@ const ShopFooter = () => {
         <div className="bottom-section-left">
           <ul>
             <li>
-              <a href="#">Deals</a>
+              <Link to={"/"}>Deals</Link>
             </li>
             <li>
-              <a href="#">What's New</a>
+              <a href="#products">What's New</a>
             </li>
             <li>
               <a href="#">Delivery</a>
