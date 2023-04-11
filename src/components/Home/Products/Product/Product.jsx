@@ -2,6 +2,7 @@ import "./Product.css";
 import headphones_pink from "@/assets/images/airpods_max_pink.jpg";
 import { FaStar } from "react-icons/fa";
 import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
+import { toast } from "react-toastify";
 
 const Product = ({ product }) => {
   let store = useGlobalContext();
@@ -34,6 +35,10 @@ const Product = ({ product }) => {
             <button
               className="add-to-cart"
               onClick={() => {
+                if (store.state.cartQuantity > 10) {
+                  toast.warning("You can only add 10 items to cart");
+                  return;
+                }
                 store.addToCart(product?._id);
               }}
             >
