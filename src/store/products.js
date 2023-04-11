@@ -132,10 +132,11 @@ const reducer = (state, action) => {
       delivery_type_cost: action.order.DeliveryTypeCost,
       cost_before_delivery_rate: state.cartTotal,
       cost_after_delivery_rate: action.order.costAfterDelieveryRate,
-      promo_code: action.order.promo_code,
+      promo_code: action.order.promo_code || "",
       contact_number: action.order.phoneNumber,
     };
 
+    console.log(payload);
   }
   return state;
 };
