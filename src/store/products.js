@@ -194,7 +194,7 @@ const useStore = () => {
         });
       })
       .catch((err) => {
-        toast.error("There was a problem fetching products, refresh the page");
+        toast.error("There was a problem fetching products, check your internet connection and try again");
         return [];
       });
   };
