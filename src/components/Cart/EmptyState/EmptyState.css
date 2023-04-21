@@ -1,0 +1,31 @@
+.empty-cart-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.empty-cart-image img {
+  width: 90%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.empty-cart-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.empty-cart-text h2,
+.empty-cart-text p {
+  margin-block: 25px;
+}
+
+.add-item {
+  background-color: #ff8b15;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+}

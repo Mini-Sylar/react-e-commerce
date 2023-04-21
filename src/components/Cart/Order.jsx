@@ -1,5 +1,6 @@
 import OrderDetails from "./OrderDetails/OrderDetails";
 import OrderSummary from "./OrderSummary/OrderSummary";
+import EmptyState from "./EmptyState/EmptyState";
 import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
 
 import "./Order.css";
@@ -14,7 +15,7 @@ const Order = () => {
           <h2>{store.state.cartQuantity} Items</h2>
         </div>
         <div className="order-container">
-          {store.state.cart.length > 0 &&
+          {(store.state.cart.length > 0 &&
             store.state.cart.map((product) => {
               return (
                 <OrderDetails
@@ -22,7 +23,7 @@ const Order = () => {
                   product={product}
                 ></OrderDetails>
               );
-            })}
+            })) || <EmptyState></EmptyState>}
         </div>
       </div>
       <div className="order-summary">
