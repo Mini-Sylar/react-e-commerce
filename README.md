@@ -8,6 +8,8 @@ In addition to the frontend there's an even simpler ***backend-template*** to ha
 - run ```npm install```
 - run ```npm run dev```
 
+# Example Deployment
+<a href="https://react-e-commerce-gamma.vercel.app/" target="_blank">Simple React-E-Commerce Frontend</a>
 
 ## Advantages
 - **Responsive design (💀)** :  Designed to be responsive on any device
