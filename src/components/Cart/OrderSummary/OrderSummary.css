@@ -1,5 +1,7 @@
 .is-order-summary {
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
+  background: #ffffff;
+  box-shadow: 0px 0px 10px #e8e8e8;
   padding: 20px;
   border-radius: 2px;
   -webkit-border-radius: 2px;
@@ -18,7 +20,7 @@
 .select-dropdown {
   width: 100%;
   position: relative;
-  background-color: #e6e6e6;
+  /* background-color: #e6e6e6; */
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -126,4 +128,3 @@
   color: white;
   background-color: #5ef75e;
 }
-

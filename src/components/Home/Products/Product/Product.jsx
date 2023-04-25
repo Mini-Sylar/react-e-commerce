@@ -23,7 +23,12 @@ const Product = ({ product }) => {
       <div className="product-details">
         <div className="name-add-to-cart"></div>
         <div className="price">
-          <h4>{product?.name}</h4>
+          <div className="name-price-product">
+            <h4>{product?.name}</h4>
+            <h5>
+              $<span className="actual-product-price">{product?.price}.00</span>
+            </h5>
+          </div>
           <h5>{product?.description}</h5>
           <div className="star-rating">
             <div className="star">{stars}</div>

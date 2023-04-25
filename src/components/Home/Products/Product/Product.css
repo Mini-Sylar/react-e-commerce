@@ -61,3 +61,24 @@
   padding: 10px;
   -webkit-border-radius: 5px;
 }
+.name-price-product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.name-price-product * {
+  margin: 0;
+  margin-top: 1rem;
+  font-weight: 900;
+}
+
+.name-price-product h4 {
+  font-size: 1.2rem;
+}
+
+.actual-product-price {
+  font-size: 1rem;
+  color: #ff8b15;
+}
