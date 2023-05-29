@@ -32,4 +32,16 @@
 
 }
 
+@media screen and (max-width:768px) {
+  
+  .bottom-section{
+    flex-direction: column;
+  }
+
+  .bottom-section-left ul{
+   width: 100%;
+   padding: 0;
+  }
+  
+}
 

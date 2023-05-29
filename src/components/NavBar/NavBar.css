@@ -47,3 +47,9 @@
   align-items: center;
   font-size: medium !important;
 }
+
+@media screen and (max-width:768px) {
+  .delivery-link{
+    display: none;
+  }
+}

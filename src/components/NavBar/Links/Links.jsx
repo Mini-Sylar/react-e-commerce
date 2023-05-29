@@ -4,7 +4,7 @@ const Links = () => {
     <div className="links">
       <Link to={"/"}>Deals</Link>
       <a href="#products">What's New</a>
-      <a href="#">Delivery</a>
+      <a className="delivery-link" href="#">Delivery</a>
     </div>
   );
 };

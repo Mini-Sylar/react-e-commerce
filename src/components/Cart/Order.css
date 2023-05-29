@@ -35,3 +35,17 @@
 .order-summary {
   flex: 0.4;
 }
+
+
+@media screen and (max-width:768px) {
+  .main-order-container {
+    flex-direction: column;
+  }
+  .order-summary {
+    margin-top: 2rem;
+  }
+
+  .links *{
+    font-size: 0.8rem;
+  }
+}
