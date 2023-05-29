@@ -1,7 +1,7 @@
 # React-e-commerce
 This is a customizable e-commerce frontend designed to make it easy for ***student developers*** to build on top of. <br> Built using Vite, The template features a clean and modern design, with a clear and consistent folder structure that makes it easy to navigate the project.
 <br>
-In addition to the frontend there's an even simpler ***backend-template*** to handle all your requests ([READ MORE](#))
+In addition to the frontend there's an even simpler ***backend-template*** to handle all your requests ([READ MORE](https://github.com/Mini-Sylar/react-e-commerce-backend))
 
 # Getting Started
 - Clone this repo
@@ -29,7 +29,7 @@ In addition to the frontend there's an even simpler ***backend-template*** to ha
 
 
 ## Things to note
-- When running on localhost vite uses ```.env.development``` to connect to your backend (which must be running, more info here 👉 [React E-Commerce-Backend](#)). Update it when needed
+- When running on localhost vite uses ```.env.development``` to connect to your backend (which must be running, more info here 👉 [React E-Commerce-Backend](https://github.com/Mini-Sylar/react-e-commerce-backend)). Update it when needed
 - In production mode, ```.env.production``` will be used instead.
 
 # Contributions
