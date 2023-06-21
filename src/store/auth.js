@@ -70,7 +70,6 @@ const useAuth = () => {
         toast.success("Login successful");
       }
     } catch (error) {
-      console.log(error);
       toast.error("There was a problem logging in, try again");
     }
   };

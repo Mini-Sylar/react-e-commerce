@@ -17,7 +17,6 @@ const actions = Object.freeze({
   CLEAR_CART: "CLEAR_CART",
   ADD_QUANTITY: "ADD_QUANTITY",
   REDUCE_QUANTITY: "REDUCE_QUANTITY",
-  CONFIRM_ORDER: "CONFIRM_ORDER",
   PREFILL_CART: "PREFILL_CART",
 });
 
@@ -123,45 +122,6 @@ const reducer = (state, action) => {
       cartTotal: state.cartTotal - product.price,
     };
   }
-
-  // confirm order
-  if (action.type == actions.CONFIRM_ORDER) {
-    let payload = {
-      items: state.cart,
-      totalItemCount: state.cartQuantity,
-      delivery_type: action.order.DeliveryType,
-      delivery_type_cost: action.order.DeliveryTypeCost,
-      cost_before_delivery_rate: state.cartTotal,
-      cost_after_delivery_rate: action.order.costAfterDelieveryRate,
-      promo_code: action.order.promo_code || "",
-      contact_number: action.order.phoneNumber,
-    };
-
-    // place order
-    fetch(`${import.meta.env.VITE_API_URL}/place-order`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    })
-      .then(async (response) => {
-        const data = await response.json();
-        toast.success(data.message);
-      })
-      .catch((err) => {
-        toast.error("There was a problem placing your order, try again");
-      });
-
-    // clear cart
-    localforage.setItem("cartItems", []);
-    return {
-      ...state,
-      cart: [],
-      cartQuantity: 0,
-      cartTotal: 0,
-    };
-  }
   return state;
 };
 
@@ -169,10 +129,12 @@ const useStore = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const addToCart = (product) => {
+    // TODO: Add logic here and remove modification from dispatch
     dispatch({ type: actions.ADD_TO_CART, product });
   };
 
   const removeFromCart = (product) => {
+    // TODO: Add logic here and remove modification from dispatch
     dispatch({ type: actions.REMOVE_FROM_CART, product });
   };
 
@@ -194,7 +156,9 @@ const useStore = () => {
         });
       })
       .catch((err) => {
-        toast.error("There was a problem fetching products, check your internet connection and try again");
+        toast.error(
+          "There was a problem fetching products, check your internet connection and try again"
+        );
         return [];
       });
   };
@@ -207,8 +171,39 @@ const useStore = () => {
     dispatch({ type: actions.REDUCE_QUANTITY, product });
   };
 
-  const confirmOrder = (order) => {
-    dispatch({ type: actions.CONFIRM_ORDER, order });
+  const confirmOrder = async (order) => {
+    let payload = {
+      items: state.cart,
+      totalItemCount: state.cartQuantity,
+      delivery_type: order.DeliveryType,
+      delivery_type_cost: order.DeliveryTypeCost,
+      cost_before_delivery_rate: state.cartTotal,
+      cost_after_delivery_rate: order.costAfterDelieveryRate,
+      promo_code: order.promo_code || "",
+      contact_number: order.phoneNumber,
+    };
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/place-order`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "cors",
+        credentials: "include",
+        body: JSON.stringify(payload),
+      }
+    );
+    const data = await response.json();
+    if (data.error) {
+      toast.error("You must be logged in to place an order");
+      return { showRegisterLogin: true };
+    }
+    toast.success(data.message);
+    // clear cart
+    localforage.setItem("cartItems", []);
+    dispatch({ type: actions.CLEAR_CART });
+    return true;
   };
 
   return {
