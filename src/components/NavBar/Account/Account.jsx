@@ -4,7 +4,7 @@ import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
 import { Link } from "react-router-dom";
 
 const Account = () => {
-  let store = useGlobalContext();
+  let {store} = useGlobalContext();
   const cartTotal = store.state.cartQuantity;
   return (
     <div className="account">

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 
 const OrderSummary = () => {
-  const store = useGlobalContext();
+  const {store} = useGlobalContext();
   const [deliveryType, setDeliveryType] = useState("Standard");
   const [phone, setPhone] = useState("");
   const setDelivery = (type) => {

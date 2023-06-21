@@ -5,7 +5,7 @@ import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
 import Skeleton from "react-loading-skeleton";
 
 const TopProducts = () => {
-  let store = useGlobalContext();
+  let {store} = useGlobalContext();
   // return from highest to lowest using times_bought
 
   let topProducts = store.state.products.sort(

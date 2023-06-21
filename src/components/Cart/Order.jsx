@@ -6,7 +6,8 @@ import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
 import "./Order.css";
 
 const Order = () => {
-  let store = useGlobalContext();
+  let { store } = useGlobalContext();
+
   return (
     <div className="main-order-container">
       <div className="view-order">

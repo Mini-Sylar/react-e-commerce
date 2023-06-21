@@ -1,8 +1,11 @@
 import React from "react";
 import { toast } from "react-toastify";
 import "./Modal.css";
+import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
 
 const Modal = ({ header, submitAction, buttonText, isRegister }) => {
+  const { auth } = useGlobalContext();
+
   const modalRef = React.useRef(null);
   const handleClose = () => {
     modalRef.current.style.display = "none";
@@ -23,6 +26,16 @@ const Modal = ({ header, submitAction, buttonText, isRegister }) => {
     if (isRegister && data.password !== data.confirmPassword) {
       toast.error("Passwords do not match");
       return;
+    }
+
+    // register or login
+    if (isRegister) {
+      console.log("registering");
+      console.log(data);
+      auth.register(data);
+    } else {
+      console.log("logging in");
+      auth.login(data);
     }
 
     console.log(data);
@@ -46,8 +59,8 @@ const Modal = ({ header, submitAction, buttonText, isRegister }) => {
           <form onSubmit={submitForm}>
             {isRegister && (
               <div className="form-group">
-                <label htmlFor="userName">Username</label>
-                <input type="text" className="form-control" name="userName" />
+                <label htmlFor="username">Username</label>
+                <input type="text" className="form-control" name="username" />
               </div>
             )}
 

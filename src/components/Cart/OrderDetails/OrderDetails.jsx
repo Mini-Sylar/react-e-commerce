@@ -3,7 +3,7 @@ import "./OrderDetails.css";
 import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
 
 const OrderDetails = ({ product }) => {
-  const store = useGlobalContext();
+  const {store} = useGlobalContext();
   return (
     <div className="order-details">
       <div className="order-detail">

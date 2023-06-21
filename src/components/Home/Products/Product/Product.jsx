@@ -5,7 +5,7 @@ import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
 import { toast } from "react-toastify";
 
 const Product = ({ product }) => {
-  let store = useGlobalContext();
+  let {store} = useGlobalContext();
   let stars = [];
   for (let i = 0; i < product?.rating; i++) {
     stars.push(<FaStar key={i} />);

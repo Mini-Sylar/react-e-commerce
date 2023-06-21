@@ -4,7 +4,7 @@ import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
 import Skeleton from "react-loading-skeleton";
 
 const Deals = () => {
-  let store = useGlobalContext();
+  let {store} = useGlobalContext();
 
   let cheapest = store.state.products.sort((a, b) => a.price - b.price);
   return (

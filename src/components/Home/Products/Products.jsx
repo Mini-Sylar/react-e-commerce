@@ -7,7 +7,7 @@ import Skeleton from "react-loading-skeleton";
 
 
 const Products = () => {
-  let store = useGlobalContext();
+  let {store} = useGlobalContext();
   let sortedProducts = store.state.products
     .slice()
     .sort((a, b) => a.name.localeCompare(b.name));
