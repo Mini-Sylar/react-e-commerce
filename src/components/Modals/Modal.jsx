@@ -7,16 +7,14 @@ import { useState } from "react";
 
 const Modal = ({ header, submitAction, buttonText, isRegister }) => {
   const { auth } = useGlobalContext();
+  const { modal } = useGlobalContext();
   let [loading, setLoading] = useState(false);
-
-  const modalRef = React.useRef(null);
   const handleClose = () => {
-    modalRef.current.style.display = "none";
+    modal.closeModal();
   };
 
   const submitForm = (e) => {
     e.preventDefault();
-
     setLoading(true);
     console.log("submitting form");
     const formData = [...e.target.elements].filter(
@@ -51,7 +49,7 @@ const Modal = ({ header, submitAction, buttonText, isRegister }) => {
     }
   };
   return (
-    <div className="modal-container" ref={modalRef}>
+    <div className="modal-container">
       <div className="modal">
         <div className="modal-cancel">
           <button

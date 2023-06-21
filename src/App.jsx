@@ -14,6 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   let { store } = useGlobalContext();
+  let { modal } = useGlobalContext();
   useEffect(() => {
     if (store.state.products.length > 0) return;
     store.getProducts();
@@ -34,12 +35,12 @@ function App() {
           <ShopFooter></ShopFooter>
         </footer>
       </BrowserRouter>
-      <Modal
+     {modal.opened && <Modal
         header="Login"
         submitAction="/"
         buttonText="Login"
         isRegister={false}
-      />
+      />}
       <ToastContainer />
     </div>
   );
