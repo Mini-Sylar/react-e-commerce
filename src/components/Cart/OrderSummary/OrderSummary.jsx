@@ -4,8 +4,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 
 const OrderSummary = () => {
-  const { store } = useGlobalContext();
-  const { modal } = useGlobalContext();
+  const { store, modal, auth } = useGlobalContext();
   const [deliveryType, setDeliveryType] = useState("Standard");
   const [phone, setPhone] = useState("");
   const setDelivery = (type) => {
@@ -19,6 +18,7 @@ const OrderSummary = () => {
         store.state.cartTotal + (deliveryType == "Standard" ? 5 : 10),
       promoCode: "",
       phoneNumber: phone,
+      user_id: auth.state.user?.id,
     };
 
     const response = await store.confirmOrder(payload);

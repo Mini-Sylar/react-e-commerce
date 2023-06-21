@@ -1,8 +1,7 @@
 import { useReducer } from "react";
 import { toast } from "react-toastify";
-import localforage from "localforage";
 const initialState = {
-  user: await localforage.getItem("user") || null,
+  user: sessionStorage.getItem("user") || null,
 };
 const actions = Object.freeze({
   SET_USER: "SET_USER",
@@ -40,7 +39,8 @@ const useAuth = () => {
       }
       if (user.user) {
         dispatch({ type: actions.SET_USER, user: user.user });
-        localforage.setItem("user", user.user);
+        sessionStorage.setItem("user", user.user);
+
         toast.success("Registration successful");
         // login user
       }
@@ -66,7 +66,7 @@ const useAuth = () => {
       }
       if (user.user) {
         dispatch({ type: actions.SET_USER, user: user.user });
-        localforage.setItem("user", user.user);
+        sessionStorage.setItem("user", user.user);
         toast.success("Login successful");
       }
     } catch (error) {

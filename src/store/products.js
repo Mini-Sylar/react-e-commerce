@@ -181,6 +181,7 @@ const useStore = () => {
       cost_after_delivery_rate: order.costAfterDelieveryRate,
       promo_code: order.promo_code || "",
       contact_number: order.phoneNumber,
+      user_id: order.user_id,
     };
     const response = await fetch(
       `${import.meta.env.VITE_API_URL}/place-order`,
