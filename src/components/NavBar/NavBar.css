@@ -25,12 +25,14 @@
 
 .account-details {
   position: relative;
+  font-size: 1.4rem;
 }
 
-.account span:nth-of-type(1) {
-  font-size: 1.5rem;
+.contains-link-to-accounts {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-
 .items-in-cart {
   position: absolute;
   content: "";
@@ -40,16 +42,16 @@
   background-color: #ff0000;
   color: white;
   border-radius: 50%;
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1rem;
+  height: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: medium !important;
+  font-size: 12px !important;
 }
 
-@media screen and (max-width:768px) {
-  .delivery-link{
+@media screen and (max-width: 768px) {
+  .delivery-link {
     display: none;
   }
 }

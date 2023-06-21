@@ -30,6 +30,8 @@ const useAuth = () => {
         headers: {
           "Content-Type": "application/json",
         },
+        mode: "cors",
+        credentials: "include",
         body: JSON.stringify(userInfo),
       });
 
@@ -54,9 +56,10 @@ const useAuth = () => {
         headers: {
           "Content-Type": "application/json",
         },
+        mode: "cors",
+        credentials: "include",
         body: JSON.stringify(userInfo),
       });
-
       const user = await response.json();
       if (user.error) {
         toast.error(user.error);
@@ -66,6 +69,7 @@ const useAuth = () => {
         toast.success("Login successful");
       }
     } catch (error) {
+      console.log(error);
       toast.error("There was a problem logging in, try again");
     }
   };

@@ -13,7 +13,7 @@ import Modal from "./components/Modals/Modal";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  let {store} = useGlobalContext();
+  let { store } = useGlobalContext();
   useEffect(() => {
     if (store.state.products.length > 0) return;
     store.getProducts();
@@ -35,10 +35,10 @@ function App() {
         </footer>
       </BrowserRouter>
       <Modal
-        header="Create Account"
+        header="Login"
         submitAction="/"
-        buttonText="Create Account"
-        isRegister={true}
+        buttonText="Login"
+        isRegister={false}
       />
       <ToastContainer />
     </div>

@@ -2,9 +2,12 @@ import React from "react";
 import { toast } from "react-toastify";
 import "./Modal.css";
 import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
+import ClipLoader from "react-spinners/ClipLoader";
+import { useState } from "react";
 
 const Modal = ({ header, submitAction, buttonText, isRegister }) => {
   const { auth } = useGlobalContext();
+  let [loading, setLoading] = useState(false);
 
   const modalRef = React.useRef(null);
   const handleClose = () => {
@@ -13,6 +16,8 @@ const Modal = ({ header, submitAction, buttonText, isRegister }) => {
 
   const submitForm = (e) => {
     e.preventDefault();
+
+    setLoading(true);
     console.log("submitting form");
     const formData = [...e.target.elements].filter(
       (element) => element.type !== "submit"
@@ -22,23 +27,28 @@ const Modal = ({ header, submitAction, buttonText, isRegister }) => {
       return acc;
     }, {});
 
-    // check if passwords match
-    if (isRegister && data.password !== data.confirmPassword) {
-      toast.error("Passwords do not match");
+    // if empty fields
+    if (Object.values(data).some((value) => value === "")) {
+      toast.error("Please fill in all fields");
+      setLoading(false);
       return;
     }
-
+    if (isRegister && data.password !== data.confirmPassword) {
+      toast.error("Passwords do not match");
+      setLoading(false);
+      return;
+    }
     // register or login
     if (isRegister) {
-      console.log("registering");
-      console.log(data);
-      auth.register(data);
+      auth.register(data).finally(() => {
+        setLoading(false);
+      });
     } else {
       console.log("logging in");
-      auth.login(data);
+      auth.login(data).finally(() => {
+        setLoading(false);
+      });
     }
-
-    console.log(data);
   };
   return (
     <div className="modal-container" ref={modalRef}>
@@ -84,7 +94,15 @@ const Modal = ({ header, submitAction, buttonText, isRegister }) => {
             )}
             <div className="form-group">
               <button type="submit" className="btn-rounded btn-submit">
-                {buttonText}
+                {buttonText}{" "}
+                <span>
+                  <ClipLoader
+                    loading={loading}
+                    size={10}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                  />
+                </span>
               </button>
             </div>
           </form>
