@@ -9,6 +9,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { useEffect } from "react";
 import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
 import { ToastContainer, toast } from "react-toastify";
+import Modal from "./components/Modals/Modal";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
@@ -33,6 +34,12 @@ function App() {
           <ShopFooter></ShopFooter>
         </footer>
       </BrowserRouter>
+      <Modal
+        header="Create Account"
+        submitAction="/"
+        buttonText="Create Account"
+        isRegister={true}
+      />
       <ToastContainer />
     </div>
   );

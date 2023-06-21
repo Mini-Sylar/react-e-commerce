@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const DeliveryView = () => {
   return (
-    <div>DeliveryView</div>
-  )
-}
+    <div>
+      
+    </div>
+  );
+};
 
-export default DeliveryView
+export default DeliveryView;
