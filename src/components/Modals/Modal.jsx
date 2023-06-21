@@ -12,19 +12,14 @@ const Modal = ({ header, submitAction, buttonText, isRegister }) => {
   const handleClose = () => {
     modal.closeModal();
   };
-
+  const handleSwitch = () => {
+    modal.openModal(!isRegister);
+  };
   const submitForm = (e) => {
     e.preventDefault();
     setLoading(true);
-    console.log("submitting form");
-    const formData = [...e.target.elements].filter(
-      (element) => element.type !== "submit"
-    );
-    const data = formData.reduce((acc, cur) => {
-      acc[cur.name] = cur.value;
-      return acc;
-    }, {});
-
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
     // if empty fields
     if (Object.values(data).some((value) => value === "")) {
       toast.error("Please fill in all fields");
@@ -42,7 +37,6 @@ const Modal = ({ header, submitAction, buttonText, isRegister }) => {
         setLoading(false);
       });
     } else {
-      console.log("logging in");
       auth.login(data).finally(() => {
         setLoading(false);
       });
@@ -71,7 +65,6 @@ const Modal = ({ header, submitAction, buttonText, isRegister }) => {
                 <input type="text" className="form-control" name="username" />
               </div>
             )}
-
             <div className="form-group">
               <label htmlFor="email">Email</label>
               <input type="email" className="form-control" name="email" />
@@ -90,6 +83,35 @@ const Modal = ({ header, submitAction, buttonText, isRegister }) => {
                 />
               </div>
             )}
+            <div className="login-or-register">
+              {isRegister ? (
+                <span>
+                  Already have an account?
+                  <button
+                    className="btn-rounded"
+                    type="button"
+                    onClick={() => {
+                      handleSwitch();
+                    }}
+                  >
+                    Login
+                  </button>
+                </span>
+              ) : (
+                <span>
+                  Don't have an account?
+                  <button
+                    className="btn-rounded"
+                    type="button"
+                    onClick={() => {
+                      handleSwitch();
+                    }}
+                  >
+                    Create One
+                  </button>
+                </span>
+              )}
+            </div>
             <div className="form-group">
               <button type="submit" className="btn-rounded btn-submit">
                 {buttonText}{" "}

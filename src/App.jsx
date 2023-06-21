@@ -35,12 +35,14 @@ function App() {
           <ShopFooter></ShopFooter>
         </footer>
       </BrowserRouter>
-     {modal.opened && <Modal
-        header="Login"
-        submitAction="/"
-        buttonText="Login"
-        isRegister={false}
-      />}
+      {modal.opened && (
+        <Modal
+          header={modal.isRegister ? "Create Account" : "Login"}
+          submitAction="/"
+          buttonText={modal.isRegister ? "Create Account" : "Login"}
+          isRegister={modal.isRegister}
+        />
+      )}
       <ToastContainer />
     </div>
   );

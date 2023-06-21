@@ -2,6 +2,7 @@ import { useReducer } from "react";
 
 const initialState = {
   opened: false,
+  isRegister: false,
 };
 
 const actions = Object.freeze({
@@ -23,7 +24,8 @@ const reducer = (state, action) => {
 const useModal = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const openModal = () => {
+  const openModal = (isRegister = true) => {
+    state.isRegister = isRegister;
     dispatch({ type: actions.OPEN_MODAL });
   };
 

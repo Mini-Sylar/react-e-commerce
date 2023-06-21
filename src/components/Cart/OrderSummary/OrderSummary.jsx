@@ -4,13 +4,14 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 
 const OrderSummary = () => {
-  const {store} = useGlobalContext();
+  const { store } = useGlobalContext();
+  const { modal } = useGlobalContext();
   const [deliveryType, setDeliveryType] = useState("Standard");
   const [phone, setPhone] = useState("");
   const setDelivery = (type) => {
     setDeliveryType(type);
   };
-  const checkOut = () => {
+  const checkOut = async () => {
     let payload = {
       DeliveryType: deliveryType,
       DeliveryTypeCost: deliveryType == "Standard" ? 5 : 10,
@@ -20,7 +21,10 @@ const OrderSummary = () => {
       phoneNumber: phone,
     };
 
-    store.confirmOrder(payload);
+    const response = await store.confirmOrder(payload);
+    if (response.showRegisterLogin) {
+      modal.openModal();
+    }
   };
   return (
     <div className="is-order-summary">
