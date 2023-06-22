@@ -2,7 +2,7 @@ import { useReducer } from "react";
 import { toast } from "react-toastify";
 import localforage from "localforage";
 const initialState = {
-  user: await localforage.getItem("user") || null,
+  user: (await localforage.getItem("user")) || null,
 };
 const actions = Object.freeze({
   SET_USER: "SET_USER",
@@ -75,7 +75,7 @@ const useAuth = () => {
   };
 
   const logout = async () => {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/logout`, {
+    await fetch(`${import.meta.env.VITE_API_URL}/logout`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -83,6 +83,7 @@ const useAuth = () => {
       mode: "cors",
       credentials: "include",
     });
+    localforage.removeItem("user");
     dispatch({ type: actions.LOGOUT });
   };
 

@@ -33,13 +33,24 @@ const Modal = ({ header, submitAction, buttonText, isRegister }) => {
     }
     // register or login
     if (isRegister) {
-      auth.register(data).finally(() => {
-        setLoading(false);
-      });
+      auth
+        .register(data)
+        .then(() => {
+          // close modal
+          modal.closeModal();
+        })
+        .finally(() => {
+          setLoading(false);
+        });
     } else {
-      auth.login(data).finally(() => {
-        setLoading(false);
-      });
+      auth
+        .login(data)
+        .then(() => {
+          modal.closeModal();
+        })
+        .finally(() => {
+          setLoading(false);
+        });
     }
   };
   return (
