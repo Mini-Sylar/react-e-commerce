@@ -1,0 +1,10 @@
+.no-delivery-action-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.login-bg {
+  background-color: #ff8b15;
+  color: #fff;
+}

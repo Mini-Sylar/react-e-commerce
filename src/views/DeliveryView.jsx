@@ -1,6 +1,7 @@
 import React from "react";
 import { useGlobalContext } from "../components/GlobalContext/GlobalContext";
 import { useEffect } from "react";
+import DeliveryEmpty from "../components/Delivery/DeliveryEmpty";
 const DeliveryView = () => {
   const { orders, auth, modal } = useGlobalContext();
 
@@ -12,7 +13,15 @@ const DeliveryView = () => {
     }
   }, [auth.state.user]);
 
-  return <div></div>;
+  return (
+    <div>
+      {orders.state.orders.length === 0 ? (
+        <DeliveryEmpty></DeliveryEmpty>
+      ) : (
+        <div>DeliveryView</div>
+      )}
+    </div>
+  );
 };
 
 export default DeliveryView;
