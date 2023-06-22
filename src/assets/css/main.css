@@ -12,6 +12,7 @@
   border: none;
   padding: 1rem 2rem;
   font-weight: 900;
+  cursor: pointer;
 }
 
 .btn-submit {

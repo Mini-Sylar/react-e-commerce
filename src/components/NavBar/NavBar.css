@@ -1,17 +1,21 @@
 .nav-container {
   display: flex;
   gap: 1rem;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  width: 100%;
   align-items: center;
   min-height: 5rem;
   color: white;
+}
+
+.links,.account,.logo{
+  width: 100%;
 }
 
 .links {
   display: flex;
   justify-content: space-around;
   text-align: center;
-  width: min(50%, 400px);
 }
 .links a {
   width: 100%;
@@ -22,6 +26,7 @@
 .account {
   display: flex;
   gap: 1.5rem;
+  justify-content: flex-end;
   align-items: center;
 }
 
