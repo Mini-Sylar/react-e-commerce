@@ -74,7 +74,15 @@ const useAuth = () => {
     }
   };
 
-  const logout = () => {
+  const logout = async () => {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/logout`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+      credentials: "include",
+    });
     dispatch({ type: actions.LOGOUT });
   };
 

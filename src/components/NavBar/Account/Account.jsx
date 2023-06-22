@@ -13,6 +13,10 @@ const Account = () => {
     modal.openModal(false);
   };
 
+  const handleLogout = () => {
+    auth.logout();
+  };
+
   return (
     <div className="account">
       <div className="cart">
@@ -31,9 +35,18 @@ const Account = () => {
         </Link>
       </div>
       <div className="login">
-        <button className="btn-rounded small-rounded" onClick={handleShowModal}>
-          Login
-        </button>
+        {auth.state.user == null ? (
+          <button
+            className="btn-rounded small-rounded"
+            onClick={handleShowModal}
+          >
+            Login
+          </button>
+        ) : (
+          <button className="btn-rounded small-rounded" onClick={handleLogout}>
+            Logout
+          </button>
+        )}
       </div>
     </div>
   );
