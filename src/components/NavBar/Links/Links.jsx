@@ -3,7 +3,7 @@ const Links = () => {
   return (
     <div className="links">
       <Link to={"/"}>Deals</Link>
-      <a href="#products">What's New</a>
+      <Link to={"/#products"}>What's New</Link>
       <Link to={"/delivery"}>Delivery</Link>
     </div>
   );

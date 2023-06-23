@@ -125,7 +125,8 @@ const reducer = (state, action) => {
 
   // clear cart
   if (action.type == actions.CLEAR_CART) {
-    localforage.removeItem("cartItems");
+    localforage.setItem("cartItems", []);
+    
     return {
       ...state,
       cart: [],
