@@ -12,19 +12,21 @@ In addition to the frontend there's an even simpler ***backend-template*** to ha
 <a href="https://react-e-commerce-gamma.vercel.app/" target="_blank">Simple React-E-Commerce Frontend</a>
 
 ## Advantages
-- **Responsive design (💀)** :  Designed to be responsive on any device
+- **Responsive design** :  Designed to be responsive on any device
 - **Customizable :** Easy to expand on and add your own features, no fancy libraries are used, everything is purely react and es6 functions
 - **Clean project structure** : Components are all seperated into their respective folders with their individual CSS files for easy styling
-- **Vite**: Get your server started in a a matter of seconds using vite
+- **Vite**: Get your server started in a matter of seconds using vite
 
 ## What you get
 - A cart system: A store built using only ***useReducer***, no redux or any other fancy state management system
 - Cached cart: Cart data is cached using localforage
 - Checkout: Adjust cart details and place orders here
 - Routing: Page routing has been set up to easily navigate between pages
+- Auth🔥: JWT authentication allowing the user to login and logout
+- Modals🔥: Easy and customzizable modals
+- Orders🔥: View orders, get details on when your order will be processed, cancel or report order  
 
 ## What it doesn't have 
-- Account creation / login : There are many authentication methods, choose the one that best fits your needs (oAuth2,JWT,Sessions etc).
 - SEO: This is primarily for educational purposes, if you need SEO, you would have to commit to that. 
 
 
