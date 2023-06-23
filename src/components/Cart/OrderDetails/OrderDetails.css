@@ -59,3 +59,14 @@ button:disabled:hover {
   background-color: #aaa;
   cursor: not-allowed;
 }
+
+
+@media screen and (max-width:500px) {
+  .order-details{
+   grid-template-columns: 1fr;
+  }
+
+  .quantity {
+    width: 100%;
+  }
+}

@@ -242,6 +242,17 @@ progress[value]::-moz-progress-bar {
   justify-content: flex-end;
 }
 
+
+@media screen and (max-width:500px) {
+  .delivery-progress{
+      width: 100%;
+  }
+
+  .delivery-date{
+    text-align: left;
+  }
+}
+
 @-webkit-keyframes animate-stripes {
   100% {
     background-position: -100px 0px;
