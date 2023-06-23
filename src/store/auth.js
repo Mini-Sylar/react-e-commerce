@@ -1,7 +1,12 @@
 import { useReducer } from "react";
 import { toast } from "react-toastify";
+import {
+  setExpirationDate,
+  getUserFromLocalStorage,
+} from "../helpers/checkExpiration";
+
 const initialState = {
-  user: JSON.parse(sessionStorage.getItem("user")) || null,
+  user: getUserFromLocalStorage() || null,
 };
 const actions = Object.freeze({
   SET_USER: "SET_USER",
@@ -39,7 +44,8 @@ const useAuth = () => {
       }
       if (user.user) {
         dispatch({ type: actions.SET_USER, user: user.user });
-        sessionStorage.setItem("user", JSON.stringify(user.user));
+        user.user.expirationDate = setExpirationDate(7);
+        localStorage.setItem("user", JSON.stringify(user.user));
         toast.success("Registration successful");
         // login user
       }
@@ -65,7 +71,8 @@ const useAuth = () => {
       }
       if (user.user) {
         dispatch({ type: actions.SET_USER, user: user.user });
-        sessionStorage.setItem("user", JSON.stringify(user.user));
+        user.user.expirationDate = setExpirationDate(7);
+        localStorage.setItem("user", JSON.stringify(user.user));
         toast.success("Login successful");
       }
     } catch (error) {
@@ -82,7 +89,7 @@ const useAuth = () => {
       mode: "cors",
       credentials: "include",
     });
-    sessionStorage.removeItem("user");
+    localStorage.removeItem("user");
     dispatch({ type: actions.LOGOUT });
   };
 
