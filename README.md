@@ -29,9 +29,12 @@ In addition to the frontend there's an even simpler ***backend-template*** to ha
 ## What it doesn't have 
 - SEO: This is primarily for educational purposes, if you need SEO, you would have to commit to that. 
 
+<hr>
+
+**To see a stripped down version with no JWT see [NO JWT](https://github.com/Mini-Sylar/react-e-commerce/tree/main)**
 
 ## Things to note
-- When running on localhost vite uses ```.env.development``` to connect to your backend (which must be running, more info here 👉 [React E-Commerce-Backend](https://github.com/Mini-Sylar/react-e-commerce-backend)). Update it when needed
+- When running on localhost vite uses ```.env.development``` to connect to your backend (which must be running, more info here 👉 [React E-Commerce-Backend With JWT](https://github.com/Mini-Sylar/react-e-commerce/tree/main-jwt)) . Update it when needed
 - In production mode, ```.env.production``` will be used instead.
 
 # Contributions
