@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: .5rem;
+  padding: 0.5rem;
   box-shadow: 0px 0px 10px #e8e8e8;
 }
 
@@ -165,6 +165,11 @@ progress[value]::-moz-progress-bar {
   color: #3a3939;
 }
 
+.delivery-items h6 {
+  margin-block-start: .5rem;
+  color: #f44;
+}
+
 .flair {
   border: 1px solid transparent;
   background-color: #3a3939;
@@ -192,7 +197,7 @@ progress[value]::-moz-progress-bar {
   background-color: #22cc00;
 }
 
-.is-delivered{
+.is-delivered {
   color: #22cc00 !important;
 }
 
@@ -226,7 +231,7 @@ progress[value]::-moz-progress-bar {
   color: #ffffff !important;
 }
 
-.reload-orders{
+.reload-orders {
   width: 100%;
   padding-top: 1rem;
   display: flex;

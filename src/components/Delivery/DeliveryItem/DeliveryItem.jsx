@@ -41,6 +41,7 @@ const DeliveryItem = ({ order }) => {
               <h5>Item Count: {order.totalItemCount}</h5>
               <h5>Total Cost: ${order.cost_after_delivery_rate}</h5>
               <h5>Delivery Type: {order.delivery_type}</h5>
+              <h6>Total cost includes delivery fee</h6>
             </div>
           </div>
           <div className="delivery-progress">
@@ -68,7 +69,8 @@ const DeliveryItem = ({ order }) => {
             <h3 className="delivery-item-title">Expected Completion</h3>
             {(order.percentage_complete != 100 && (
               <h4>{formattedDate} day(s)</h4>
-            )) ||""}
+            )) ||
+              ""}
             {(order.percentage_complete != 100 && (
               <h4>{numberOfDays} day(s)</h4>
             )) || <h4 className="is-delivered">Delievered</h4>}
@@ -85,6 +87,7 @@ const DeliveryItem = ({ order }) => {
                   <div className="delivery-products-item" key={item._id}>
                     <img src={item.product_image} alt="" width="50" />
                     <h5>Product Name: {item.name}</h5>
+                    <h5>Description: {item.description}</h5>
                     <h5>Price: ${item.price}</h5>
                     <h5>Quantity: {item.quantity}</h5>
                   </div>
@@ -92,17 +95,19 @@ const DeliveryItem = ({ order }) => {
               })}
             </div>
           </div>
-         { order.percentage_complete !=100 && <div className="danger-zone">
-            <h3 className="danger-zone-text">Danger Zone</h3>
-            <div className="danger-zone-buttons">
-              <button className="btn-rounded danger-zone-button">
-                Cancel Order
-              </button>
-              <button className="btn-rounded danger-zone-button report-issue">
-                Report Issue
-              </button>
+          {order.percentage_complete != 100 && (
+            <div className="danger-zone">
+              <h3 className="danger-zone-text">Danger Zone</h3>
+              <div className="danger-zone-buttons">
+                <button className="btn-rounded danger-zone-button">
+                  Cancel Order
+                </button>
+                <button className="btn-rounded danger-zone-button report-issue">
+                  Report Issue
+                </button>
+              </div>
             </div>
-          </div>}
+          )}
         </div>
       </div>
 
@@ -112,7 +117,7 @@ const DeliveryItem = ({ order }) => {
           <span>
             <FaCaretUp
               className={
-                expanded ? "caret-delivery caret-expanded" : "caret-delivery"
+                expanded ? "caret-delivery" : "caret-delivery caret-expanded"
               }
             ></FaCaretUp>
           </span>
