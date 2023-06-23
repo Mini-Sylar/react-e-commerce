@@ -1,7 +1,8 @@
 import React from "react";
 import { useGlobalContext } from "../components/GlobalContext/GlobalContext";
 import { useEffect } from "react";
-import DeliveryEmpty from "../components/Delivery/DeliveryEmpty";
+import DeliveryEmpty from "../components/Delivery/DeliveryEmpty/DeliveryEmpty";
+import DeliveryItem from "../components/Delivery/DeliveryItem/DeliveryItem";
 const DeliveryView = () => {
   const { orders, auth, modal } = useGlobalContext();
 
@@ -18,7 +19,11 @@ const DeliveryView = () => {
       {orders.state.orders.length === 0 ? (
         <DeliveryEmpty></DeliveryEmpty>
       ) : (
-        <div>DeliveryView</div>
+        <div>
+         {orders.state.orders.map((order) => {
+            return <DeliveryItem key={order._id} order={order}></DeliveryItem>;
+         })}
+        </div>
       )}
     </div>
   );

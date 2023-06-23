@@ -122,6 +122,19 @@ const reducer = (state, action) => {
       cartTotal: state.cartTotal - product.price,
     };
   }
+
+  // clear cart
+  if (action.type == actions.CLEAR_CART) {
+    localforage.removeItem("cartItems");
+    return {
+      ...state,
+      cart: [],
+      order: [],
+      cartTotal: 0,
+      cartQuantity: 0,
+    };
+  }
+
   return state;
 };
 
@@ -201,9 +214,7 @@ const useStore = () => {
       return { showRegisterLogin: true };
     }
     toast.success(data.message);
-    // clear cart
-    localforage.setItem("cartItems", []);
-    dispatch({ type: actions.CLEAR_CART });
+    clearCart();
     return true;
   };
 
