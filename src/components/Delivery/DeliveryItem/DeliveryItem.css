@@ -73,7 +73,7 @@
 }
 
 .isExpanded {
-  max-height: min(60vh, 600px);
+  max-height: min(85vh, 800px);
 }
 
 .delivery-date {
@@ -199,6 +199,10 @@ progress[value]::-moz-progress-bar {
 
 .is-delivered {
   color: #22cc00 !important;
+}
+
+.is-cancelled {
+  color: #f44 !important;
 }
 
 .danger-zone-text {

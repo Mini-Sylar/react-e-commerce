@@ -5,16 +5,33 @@ import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
 import ClipLoader from "react-spinners/ClipLoader";
 import { useState } from "react";
 
-const CancelOrder = ({ header, submitAction, buttonText, isRegister }) => {
-  const { auth } = useGlobalContext();
-  const { modal } = useGlobalContext();
+const CancelOrder = () => {
+  const { modal, orders, auth } = useGlobalContext();
   let [loading, setLoading] = useState(false);
   const handleClose = () => {
     modal.closeCancelModal();
   };
   const submitForm = (e) => {
+    console.log("attempting to cancel order");
     e.preventDefault();
     setLoading(true);
+    const order_to_be_cancelled = orders.state.order_to_be_canceled;
+    orders
+      .cancelOrder(order_to_be_cancelled)
+      .then(() => {
+        toast.success(
+          `Order #${order_to_be_cancelled.slice(0, 6)} has been canceled`
+        );
+        // get new orders
+        orders.getOrders(auth.state.user.id);
+        handleClose();
+      })
+      .catch(() => {
+        toast.error("There was an issue cancelling your order");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
     // submit cancel order here
     // close modal here
   };
@@ -53,7 +70,9 @@ const CancelOrder = ({ header, submitAction, buttonText, isRegister }) => {
               <button
                 type="button"
                 className="btn-rounded btn-submit btn-submit-small"
-                onClick={handleClose}
+                onClick={() => {
+                  modal.closeCancelModal();
+                }}
               >
                 Close
               </button>

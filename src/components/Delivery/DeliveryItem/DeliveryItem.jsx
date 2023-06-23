@@ -1,6 +1,7 @@
 import "./DeliveryItem.css";
 import { useState } from "react";
 import { FaCaretUp } from "react-icons/fa";
+import { useGlobalContext } from "../../GlobalContext/GlobalContext";
 
 const DeliveryItem = ({ order }) => {
   const [expanded, setExpanded] = useState(false);
@@ -28,6 +29,25 @@ const DeliveryItem = ({ order }) => {
     }
   };
 
+  const checkFlairText = (percentage) => {
+    if (order.order_cancelled) {
+      return "Order Cancelled";
+    } else if (percentage < 50) {
+      return "Verification Pending";
+    } else if (percentage < 90) {
+      return "Verified & In Delivery";
+    } else {
+      return "Delivered";
+    }
+  };
+
+  const { modal, orders } = useGlobalContext();
+
+  const handleOpenCancelModal = (order_id) => {
+    modal.openCancelModal();
+    orders.setOrderToBeCanceled(order_id);
+  };
+
   return (
     <div className="sub-container delivery-item-container">
       <div className="delivery-overview">
@@ -49,14 +69,7 @@ const DeliveryItem = ({ order }) => {
             <h4>
               {order.percentage_complete}%{" "}
               <span className={checkFlair(order.percentage_complete)}>
-                {
-                  // eslint-disable-next-line no-nested-ternary
-                  order.percentage_complete < 50
-                    ? "Verification Pending"
-                    : order.percentage_complete < 90
-                    ? "Verified & In Delivery"
-                    : "Delivered"
-                }
+                {checkFlairText(order.percentage_complete)}
               </span>
             </h4>
             <progress
@@ -67,13 +80,20 @@ const DeliveryItem = ({ order }) => {
           </div>
           <div className="delivery-date">
             <h3 className="delivery-item-title">Expected Completion</h3>
-            {(order.order_processed != true && (
-              <h4>{formattedDate} day(s)</h4>
-            )) ||
+            {(order.order_processed != true &&
+              order.order_cancelled != true && <h4>{formattedDate}</h4>) ||
+              (order.order_processed == true && (
+                <h4 className="is-delivered">Delivered</h4>
+              )) ||
+              (order.order_cancelled == true && (
+                <h4 className="is-cancelled">Cancelled</h4>
+              ))}
+
+            {(order.order_processed != true &&
+              order.order_cancelled != true && (
+                <h4>{numberOfDays} day(s)</h4>
+              )) ||
               ""}
-            {(order.order_processed != true && (
-              <h4>{numberOfDays} day(s)</h4>
-            )) || <h4 className="is-delivered">Delievered</h4>}
           </div>
         </div>
         <div
@@ -95,14 +115,28 @@ const DeliveryItem = ({ order }) => {
               })}
             </div>
           </div>
-          {order.order_processed != true && (
+          {order.order_processed != true && order.order_cancelled != true && (
             <div className="danger-zone">
               <h3 className="danger-zone-text">Danger Zone</h3>
               <div className="danger-zone-buttons">
-                <button className="btn-rounded danger-zone-button">
+                <button
+                  className="btn-rounded danger-zone-button"
+                  onClick={() => {
+                    handleOpenCancelModal(order._id);
+                  }}
+                >
                   Cancel Order
                 </button>
-                <button className="btn-rounded danger-zone-button report-issue">
+                <button
+                  className="btn-rounded danger-zone-button report-issue"
+                  onClick={() => {
+                    // mailto link
+                    window.location.href = `mailto:www.minisylar3@gmail.com?subject=Reporting Order #${order._id.slice(
+                      0,
+                      6
+                    )}`;
+                  }}
+                >
                   Report Issue
                 </button>
               </div>

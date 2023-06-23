@@ -3,7 +3,7 @@ import { useReducer } from "react";
 const initialState = {
   opened: false,
   isRegister: false,
-  isCancelModal: true,
+  isCancelModal: false,
 };
 
 const actions = Object.freeze({
