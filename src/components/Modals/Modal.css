@@ -76,3 +76,19 @@
   align-items: center;
   width: 100%;
 }
+
+.cancel-modal-group {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+.btn-submit-small {
+  padding: 0.5rem 1rem !important;
+}
+
+.btn-cancel {
+  background-color: #e14949 !important;
+}

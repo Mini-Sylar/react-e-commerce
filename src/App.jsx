@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { useGlobalContext } from "@/components/GlobalContext/GlobalContext";
 import { ToastContainer, toast } from "react-toastify";
 import Modal from "./components/Modals/Modal";
+import CancelOrder from "./components/Modals/CancelOrder";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
           isRegister={modal.isRegister}
         />
       )}
+      {modal.isCancelModal && <CancelOrder></CancelOrder>}
       <ToastContainer />
     </div>
   );
