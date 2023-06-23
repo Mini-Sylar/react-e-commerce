@@ -192,6 +192,10 @@ progress[value]::-moz-progress-bar {
   background-color: #22cc00;
 }
 
+.is-delivered{
+  color: #22cc00 !important;
+}
+
 .danger-zone-text {
   color: #f44;
 }

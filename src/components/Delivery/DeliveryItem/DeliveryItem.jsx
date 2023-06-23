@@ -66,8 +66,12 @@ const DeliveryItem = ({ order }) => {
           </div>
           <div className="delivery-date">
             <h3 className="delivery-item-title">Expected Completion</h3>
-            <h4>{formattedDate}</h4>
-            <h4>{numberOfDays} day(s)</h4>
+            {(order.percentage_complete != 100 && (
+              <h4>{formattedDate} day(s)</h4>
+            )) ||""}
+            {(order.percentage_complete != 100 && (
+              <h4>{numberOfDays} day(s)</h4>
+            )) || <h4 className="is-delivered">Delievered</h4>}
           </div>
         </div>
         <div
@@ -88,7 +92,7 @@ const DeliveryItem = ({ order }) => {
               })}
             </div>
           </div>
-          <div className="danger-zone">
+         { order.percentage_complete !=100 && <div className="danger-zone">
             <h3 className="danger-zone-text">Danger Zone</h3>
             <div className="danger-zone-buttons">
               <button className="btn-rounded danger-zone-button">
@@ -98,7 +102,7 @@ const DeliveryItem = ({ order }) => {
                 Report Issue
               </button>
             </div>
-          </div>
+          </div>}
         </div>
       </div>
 
