@@ -1,0 +1,31 @@
+.delivery-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.delivery-item-container {
+  margin-block: 1rem;
+  padding: 1rem;
+  background: #ffffff;
+  box-shadow: 0px 0px 10px #e8e8e8;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+
+.delivery-item-container:hover {
+  box-shadow: 13px 13px 26px #e8e8e8, -13px -13px 26px #ffffff;
+}
+
+.delivery-date {
+  text-align: right;
+}
+
+.delivery-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 auto;
+}
