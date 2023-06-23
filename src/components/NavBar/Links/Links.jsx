@@ -7,15 +7,25 @@ const Links = () => {
     if (!isHomePage) return;
     const products = document.getElementById("products");
     products.scrollIntoView({ behavior: "smooth" });
+    removeExpandedClass();
+  };
+
+  const removeExpandedClass = () => {
+    let mobileExpandedMenu = document.querySelector(".mobile-expanded-menu");
+    mobileExpandedMenu.classList.remove("mobile-expanded");
   };
 
   return (
     <div className="links">
-      <Link to={"/"}>Deals</Link>
+      <Link to={"/"} onClick={removeExpandedClass}>
+        Deals
+      </Link>
       <Link to={"/#products"} onClick={scrollToProducts}>
         What's New
       </Link>
-      <Link to={"/delivery"}>Delivery</Link>
+      <Link to={"/delivery"} onClick={removeExpandedClass}>
+        Delivery
+      </Link>
     </div>
   );
 };

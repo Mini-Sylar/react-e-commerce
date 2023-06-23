@@ -10,12 +10,26 @@ const NavBar = () => {
     let mobileExpandedMenu = document.querySelector(".mobile-expanded-menu");
     mobileExpandedMenu.classList.toggle("mobile-expanded");
   };
+  const removeExpandedClass = () => {
+    let mobileExpandedMenu = document.querySelector(".mobile-expanded-menu");
+    if (mobileExpandedMenu.classList.contains("mobile-expanded")) {
+      mobileExpandedMenu.classList.remove("mobile-expanded");
+      return true;
+    }
+
+    return false;
+  };
   return (
     <div className="sub-container nav-main">
       <div className="nav-container">
         <Logo></Logo>
-        <button className="hamburger" onClick={handleHamClick}>
-          <Hamburger size={20} color="#fff"></Hamburger>
+        <button type="button" className="hamburger">
+          <Hamburger
+            size={20}
+            color="#fff"
+            toggle={handleHamClick}
+            rounded
+          ></Hamburger>
         </button>
         <span className="desktop-links">
           <Links></Links>
