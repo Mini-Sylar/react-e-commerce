@@ -32,3 +32,11 @@
   width: min(60%, 400px);
   object-fit: contain;
 }
+
+@media screen and (max-width:769px) {
+  .buy-now{
+    padding: .8rem 1rem !important;
+    margin-bottom: 1rem !important;
+    font-size: small !important;
+  }
+}

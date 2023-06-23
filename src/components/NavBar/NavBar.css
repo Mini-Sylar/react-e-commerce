@@ -1,3 +1,7 @@
+.nav-main {
+  position: relative;
+}
+
 .nav-container {
   display: flex;
   gap: 1rem;
@@ -8,7 +12,9 @@
   color: white;
 }
 
-.links,.account,.logo{
+.links,
+.account,
+.logo {
   width: 100%;
 }
 
@@ -16,6 +22,13 @@
   display: flex;
   justify-content: space-around;
   text-align: center;
+}
+
+.desktop-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-around;
+  width: 100%;
 }
 .links a {
   width: 100%;
@@ -57,8 +70,106 @@
   font-size: 12px !important;
 }
 
+.nav-mobile {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   .delivery-link {
     display: none;
   }
+  .links * {
+    font-size: 0.8rem !important;
+  }
+
+  .account-user {
+    font-size: 0.8rem;
+  }
+
+  .small-rounded {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.8rem;
+  }
+
+  .account-details {
+    font-size: 1rem;
+  }
+
+  .items-in-cart {
+    width: 0.8rem !important;
+    height: 0.8rem !important;
+    font-size: 0.8rem !important;
+    left: 10px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .nav-mobile {
+    display: block;
+  }
+
+  .desktop-links {
+    display: none;
+  }
+
+  .login {
+    display: none;
+  }
+
+  .mobile-expanded-menu .links {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .mobile-expanded-menu .account .login {
+    margin: 3rem auto;
+    display: block;
+  }
+
+  .mobile-expanded-menu .account {
+    gap: 0;
+  }
+
+  .mobile-expanded-menu .account span {
+    display: none;
+  }
+
+  .mobile-expanded-menu {
+    position: absolute;
+    width: 100%;
+    background-color: #ff8a15;
+    z-index: 3;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+}
+
+  .mobile-expanded {
+    max-height: min(70rem, 100vh);
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+}
+
+  .logo {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+    background-color: transparent;
+    border: none;
+  }
+
 }

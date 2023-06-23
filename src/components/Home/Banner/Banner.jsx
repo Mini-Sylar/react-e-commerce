@@ -9,7 +9,7 @@ const Banner = () => {
           <h1>
             Grab upto 50% off on <br></br>selected Headphones
           </h1>
-          <a href="#products"><button className="btn-rounded">Buy Now</button></a>
+          <a href="#products"><button className="btn-rounded buy-now">Buy Now</button></a>
         </div>
         <div className="subject">
           <img src={girlHeadphones} alt="Girl Headphones" width={"100%"} />
