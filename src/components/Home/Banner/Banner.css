@@ -9,7 +9,6 @@
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
-
 }
 
 .subject,
@@ -33,10 +32,33 @@
   object-fit: contain;
 }
 
-@media screen and (max-width:769px) {
-  .buy-now{
-    padding: .8rem 1rem !important;
+@media screen and (max-width: 769px) {
+  .buy-now {
+    padding: 0.8rem 1rem !important;
     margin-bottom: 1rem !important;
     font-size: small !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .banner {
+    flex-direction: column-reverse;
+    padding: 1rem;
+  }
+
+  .subject {
+    justify-content: center;
+  }
+
+  .is-buy-now {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .buy-now{
+    width: 100% ;
+    padding: 1rem 2rem !important;
   }
 }
