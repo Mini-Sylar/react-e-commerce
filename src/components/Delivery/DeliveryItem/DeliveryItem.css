@@ -166,7 +166,7 @@ progress[value]::-moz-progress-bar {
 }
 
 .delivery-items h6 {
-  margin-block-start: .5rem;
+  margin-block-start: 0.5rem;
   color: #f44;
 }
 
@@ -242,14 +242,17 @@ progress[value]::-moz-progress-bar {
   justify-content: flex-end;
 }
 
-
-@media screen and (max-width:500px) {
-  .delivery-progress{
-      width: 100%;
+@media screen and (max-width: 500px) {
+  .delivery-progress {
+    width: 100%;
   }
 
-  .delivery-date{
+  .delivery-date {
     text-align: left;
+  }
+
+  .delivery-products {
+    overflow: scroll;
   }
 }
 
