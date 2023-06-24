@@ -252,6 +252,7 @@ progress[value]::-moz-progress-bar {
   }
 
   .delivery-products {
+    min-height: 600px;
     overflow: scroll;
   }
 }
