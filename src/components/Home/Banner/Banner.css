@@ -61,4 +61,8 @@
     width: 100% ;
     padding: 1rem 2rem !important;
   }
+
+  .banner-text h1{
+    text-align: center;
+  }
 }
