@@ -8,7 +8,7 @@ const DeliveryEmpty = () => {
     modal.openModal(false);
   };
   return (
-    <div className="empty-cart-state">
+    <div className="empty-cart-state no-delivery-container">
       <div className="empty-cart-image">
         <img src={EmptyCart} alt="Empty cart" width={100} />
       </div>
