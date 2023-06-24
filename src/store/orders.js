@@ -33,7 +33,7 @@ const useOrders = () => {
           "Content-Type": "application/json",
         },
         mode: "cors",
-        credentials: "same-origin",
+        credentials: "include",
       }
     );
 
@@ -58,7 +58,7 @@ const useOrders = () => {
           "Content-Type": "application/json",
         },
         mode: "cors",
-        credentials: "same-origin",
+        credentials: "include",
         body: JSON.stringify({ order_id }),
       }
     );

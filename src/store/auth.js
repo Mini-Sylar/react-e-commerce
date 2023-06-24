@@ -34,7 +34,7 @@ const useAuth = () => {
           "Content-Type": "application/json",
         },
         mode: "cors",
-        credentials: "same-origin",
+        credentials: "include",
         body: JSON.stringify(userInfo),
       });
 
@@ -62,7 +62,7 @@ const useAuth = () => {
           "Content-Type": "application/json",
         },
         mode: "cors",
-        credentials: "same-origin",
+        credentials: "include",
         body: JSON.stringify(userInfo),
       });
       const user = await response.json();
@@ -87,7 +87,7 @@ const useAuth = () => {
         "Content-Type": "application/json",
       },
       mode: "cors",
-      credentials: "same-origin",
+      credentials: "include",
     });
     localStorage.removeItem("user");
     dispatch({ type: actions.LOGOUT });

@@ -205,7 +205,7 @@ const useStore = () => {
           "Content-Type": "application/json",
         },
         mode: "cors",
-        credentials: "same-origin",
+        credentials: "include",
         body: JSON.stringify(payload),
       }
     );
