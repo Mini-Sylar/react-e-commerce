@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const CookieBanner = () => {
   const makeRequestWithUserGesture = async () => {
     document.requestStorageAccess().then(
       () => {
+        toast.success("access granted")
         console.log("access granted");
       },
       () => {
+        toast.error("Access Denied")
         console.log("access denied");
       }
     );
