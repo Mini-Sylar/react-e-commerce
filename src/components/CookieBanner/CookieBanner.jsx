@@ -1,35 +1,36 @@
 import { toast } from "react-toastify";
 
 const CookieBanner = () => {
-  const makeRequestWithUserGesture = async () => {
-    document.requestStorageAccess().then(
-      () => {
-        toast.success("access granted")
-        console.log("access granted");
-      },
-      () => {
-        toast.error("Access Denied")
-        console.log("access denied");
-      }
-    );
+  const handleIframeLoad = (event) => {
+    const iframeDocument = event.target.contentDocument;
+
+    if (iframeDocument && iframeDocument.requestStorageAccess) {
+      iframeDocument
+        .requestStorageAccess()
+        .then(function (access) {
+          document
+            .hasStorageAccess()
+            .then(() => {
+              toast.success("Storage access granted!");
+            })
+            .catch(() => {
+              toast.error("Storage access declined");
+            });
+        })
+        .catch(function (error) {
+          toast.error("No Request API")
+          console.log("Error requesting storage access:", error);
+        });
+    }
   };
+
   return (
     <div>
-      <div className="cookie-banner">
-        <div className="cookie-banner__content">
-          <p>
-            We use cookies to improve your experience on our website. By
-            browsing this website, you agree to our use of cookies.
-          </p>
-          <button
-            className="btn-rounded btn--primary"
-            onClick={makeRequestWithUserGesture}
-          >
-            Accept
-          </button>
-          <button className="btn-rounded btn--text">Decline</button>
-        </div>
-      </div>
+      <iframe
+        title="Third-Party Content"
+        src={import.meta.env.VITE_API_URL}
+        onLoad={handleIframeLoad}
+      ></iframe>
     </div>
   );
 };
