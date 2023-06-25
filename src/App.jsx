@@ -47,7 +47,7 @@ function App() {
       )}
       {modal.isCancelModal && <CancelOrder></CancelOrder>}
       <ToastContainer />
-      <RequestCookie />
+      {/* <RequestCookie /> */}
     </div>
   );
 }
