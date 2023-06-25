@@ -12,6 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 import Modal from "./components/Modals/Modal";
 import CancelOrder from "./components/Modals/CancelOrder";
 import "react-toastify/dist/ReactToastify.css";
+import RequestCookie from "./components/CookieBanner/CookieBanner";
 
 function App() {
   let { store } = useGlobalContext();
@@ -46,6 +47,7 @@ function App() {
       )}
       {modal.isCancelModal && <CancelOrder></CancelOrder>}
       <ToastContainer />
+      <RequestCookie />
     </div>
   );
 }
