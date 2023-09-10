@@ -12,9 +12,13 @@ const DeliveryItem = ({ order }) => {
     day: "numeric",
     year: "numeric",
   });
-  const numberOfDays = Math.ceil(
-    (date.getTime() - currentDate.getTime()) / (1000 * 3600 * 24)
-  );
+  const numberOfDays = () => {
+    if (currentDate.getTime() > date.getTime()) {
+      return "0";
+    }
+    return Math.ceil((date.getTime() - currentDate.getTime()) / (1000 * 3600 * 24));
+    
+  }
   const toggleExpanded = () => {
     setExpanded(!expanded);
   };
@@ -91,7 +95,7 @@ const DeliveryItem = ({ order }) => {
 
             {(order.order_processed != true &&
               order.order_cancelled != true && (
-                <h4>{numberOfDays} day(s)</h4>
+                <h4>{numberOfDays()} day(s)</h4>
               )) ||
               ""}
           </div>
